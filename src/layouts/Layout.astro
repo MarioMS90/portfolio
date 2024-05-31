@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/open-sans';
+
+import Header from '../components/Header.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    --color-primary: #1c3144;
+    --color-secondary: #ff9f1c;
+    --black-1: #333333;
+    --grey-1: #707070;
+    --grey-2: #dcdcdc;
+  }
+
+  body {
+    font-family: 'Open Sans Variable', system-ui, sans-serif;
+    background: #f2f5fa;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    color: var(--color-primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: linear-gradient(to bottom, #2e547d, #1c3144);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      scroll-behavior: auto;
+    }
+  }
+</style>
