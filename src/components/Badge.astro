@@ -1,21 +1,19 @@
----
-interface Props {
-  className: string;
-}
-
-const { className } = Astro.props;
----
-
-<span
-  class={`
-    bg-green-100
-    text-green-800
-    text-xs
-    font-medium
-    me-2 px-2.5
-    py-0.5 rounded
-    dark:bg-green-900
-    dark:text-green-300 ${className}`}
->
-  <slot />
-</span>
+<div class="relative inline-flex overflow-hidden rounded-full p-[1px]">
+  <span
+    class={`
+    absolute inset-[-1000%] 
+    animate-[spin_2s_linear_infinite] 
+    bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]`}
+  ></span>
+  <div
+    class={`
+    flex items-center
+    justify-center
+    px-3 py-1 text-sm text-green-700 
+    bg-green-100 rounded-full 
+    dark:bg-gray-800 dark:text-white/8
+    0 backdrop-blur-3xl`}
+  >
+    Disponible para empleo
+  </div>
+</div>

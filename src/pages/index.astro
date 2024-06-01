@@ -1,29 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Badge from '../components/Badge.astro';
-import Button from '../components/Button.astro';
-import GithubIcon from '../components/icons/Github.astro';
-import LinkedinIcon from '../components/icons/Linkedin.astro';
-import EmailIcon from '../components/icons/Email.astro';
-
-const linkElements = [
-  {
-    name: 'Github',
-    icon: GithubIcon,
-    url: 'https://github.com/MarioMS90',
-  },
-  {
-    name: 'LinkedIn',
-    icon: LinkedinIcon,
-    url: 'https://www.linkedin.com/in/mario-m-5903a4a6/',
-  },
-  {
-    name: 'Email',
-    icon: EmailIcon,
-    url: 'mailto:j.mario.msx@gmail.com',
-    class: 'size-[1.2rem]',
-  },
-];
+import SectionContainer from '../components/SectionContainer.astro';
+import Intro from '../components/Intro.astro';
 ---
 
 <Layout
@@ -31,51 +9,17 @@ const linkElements = [
   description="Contacta con Mario Muñoz, Frontend Developer, para trabajar en tu proyecto."
 >
   <main class="px-4">
-    <section
-      class="py-24 md:py-40 mx-auto xl:max-w-[1140px] lg:max-w-4xl md:max-w-2xl"
-    >
-      <div class="max-w-[746px] flex items-center justify-between">
-        <div class="max-w-lg">
-          <h2 class="font-inter text-xl font-semibold text-secondary">
-            Hola! Soy
-          </h2>
-          <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
-          <Badge className="mt-2 inline-block">Disponible para empleo</Badge>
-          <p
-            class="text-2xl font-semibold leading-8 py-7 [&>strong]:text-secondary [&>strong]:font-semibold"
-          >
-            Un apasionado desarrollador especializado en
-            <strong>frontend con +3 años de experiencia</strong> y con sede en Málaga,
-            España.
-          </p>
-          <div class="flex items-center gap-7">
-            {
-              linkElements.map(link => (
-                <Button href={link.url}>
-                  <link.icon class={`size-4 text-secondary ${link.class}`} />
-                  {link.name}
-                </Button>
-              ))
-            }
-          </div>
-        </div>
-        <div class="size-44 rounded-full overflow-hidden">
-          <img
-            class="size-full object-cover"
-            src="/images/mario.webp"
-            alt="Mario Muñoz Frontend Developer"
-          />
-        </div>
-      </div>
-    </section>
-    <div class="space-y-28">
-      <section>hola</section>
-      <section>hola2</section>
+    <SectionContainer class="py-24 md:py-40">
+      <Intro />
+    </SectionContainer>
+    <div class="space-y-24 md:space-y-28">
+      <SectionContainer class=""> Hola 1 </SectionContainer>
+      <SectionContainer class=""> Hola 2 </SectionContainer>
     </div>
   </main>
-</Layout>
 
-<style>
-  main {
-  }
-</style>
+  <style>
+    main {
+    }
+  </style>
+</Layout>
