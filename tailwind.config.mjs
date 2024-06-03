@@ -11,12 +11,26 @@ export default {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
         'black-1': 'var(--color-black-1)',
-        'grey-1': 'var(--color-grey-1)',
-        'grey-2': 'var(--color-grey-2)',
       },
       fontFamily: {
         inter: ['Inter Variable', 'system-ui', 'sans-serif'],
         source: ['Open Sans Variable', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        pop: 'pop 0.6s ease-out',
+      },
+      keyframes: {
+        pop: {
+          '0%': {
+            transform: 'scale(1)',
+          },
+          '50%': {
+            transform: 'scale(1.1)',
+          },
+          '100%': {
+            transform: 'scale(1)',
+          },
+        },
       },
     },
   },

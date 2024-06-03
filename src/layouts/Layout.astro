@@ -32,9 +32,7 @@ const { title, description } = Astro.props;
     color-scheme: light dark;
     --color-primary: #1c3144;
     --color-secondary: #ff9f1c;
-    --black-1: #333333;
-    --grey-1: #707070;
-    --grey-2: #dcdcdc;
+    --color-black-1: #333333;
   }
 
   body {
@@ -44,6 +42,8 @@ const { title, description } = Astro.props;
     flex-direction: column;
     scroll-behavior: smooth;
     color: var(--color-primary);
+
+    padding-bottom: 400px;
   }
 
   @media (prefers-color-scheme: dark) {
