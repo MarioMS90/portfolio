@@ -1,0 +1,109 @@
+---
+import AngularIcon from '../components/icons/technologies/Angular.astro';
+import AstroIcon from './icons/technologies/AstroIcon.astro';
+import TypescriptIcon from '../components/icons/technologies/Typescript.astro';
+import JavascriptIcon from '../components/icons/technologies/Javascript.astro';
+import ReactIcon from '../components/icons/technologies/React.astro';
+import NextJSIcon from '../components/icons/technologies/Next.js.astro';
+import LaravelIcon from '../components/icons/technologies/Laravel.astro';
+import PythonIcon from '../components/icons/technologies/Python.astro';
+import TailwindIcon from '../components/icons/technologies/Tailwind.astro';
+
+const TAGS = {
+  ANGULAR: {
+    name: 'Angular',
+    color: '#DD003133',
+    icon: AngularIcon,
+  },
+  ASTRO: {
+    name: 'Astro',
+    color: '#1E1B44',
+    icon: AstroIcon,
+  },
+  TYPESCRIPT: {
+    name: 'Typescript',
+    color: '#3178C6',
+    icon: TypescriptIcon,
+  },
+  JAVASCRIPT: {
+    name: 'Javascript',
+    color: '#F7DF1E',
+    icon: JavascriptIcon,
+  },
+  REACT: {
+    name: 'React',
+    color: '#149ECA',
+    icon: ReactIcon,
+  },
+  NEXTJS: {
+    name: 'Next.js',
+    color: '#000000',
+    icon: NextJSIcon,
+  },
+  LARAVEL: {
+    name: 'Laravel',
+    color: '#FF2D20',
+    icon: LaravelIcon,
+  },
+  PYTHON: {
+    name: 'Python',
+    color: '#FFD43B',
+    icon: PythonIcon,
+  },
+  TAILWIND: {
+    name: 'Tailwind',
+    color: '#38BDF8',
+    icon: TailwindIcon,
+  },
+};
+
+const projects = [
+  {
+    name: 'Pictopeer',
+    description: `Una red social para publicar y compartir imágenes, 
+                  con características basadas en Instagram como el feed 
+                  o el algoritmo de sugerencias de amistad y publicaciones.`,
+    picture: '/images/pictopeer.webp',
+    tags: [TAGS.ANGULAR, TAGS.LARAVEL],
+    demo: '',
+    source: 'https://github.com/MarioMS90/Pictopeer',
+  },
+  {
+    name: 'Proyecto 2',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    picture: '/images/pictopeer.webp',
+    tags: [TAGS.NEXTJS, TAGS.REACT, TAGS.TAILWIND, TAGS.TYPESCRIPT],
+    demo: '/',
+    source: 'https://github.com/MarioMS90/Pictopeer',
+  },
+  {
+    name: 'Proyecto 3',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    picture: '/images/pictopeer.webp',
+    tags: [TAGS.PYTHON],
+    demo: '/',
+    source: 'https://github.com/MarioMS90/Pictopeer',
+  },
+];
+---
+
+<div class="flex gap-y-8 md:gap-y-12 justify-between">
+  {
+    projects.map(project => (
+      <article class="bg-white p-6 rounded-xl">
+        <div class="w-[100%] h-[40%] overflow-hidden rounded-sm">
+          <img
+            class="size-full object-cover"12
+            src={project.picture}
+            alt={project.name}
+          />
+        </div>
+        <h3>{project.name}</h3>
+
+        <p>{project.description}</p>
+      </article>
+    ))
+  }
+</div>

@@ -3,14 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import Experiencie from '../components/Experience.astro';
-import BriefcaseIcon from '../components/icons/Briefcase.astro';
-import StackIcon from '../components/icons/Stack.astro';
 import Badge from '../components/Badge.astro';
 import Button from '../components/Button.astro';
+import Stack from '../components/Stack.astro';
+import Projects from '../components/Projects.astro';
+import BriefcaseIcon from '../components/icons/Briefcase.astro';
+import StackIcon from '../components/icons/Stack.astro';
 import GithubIcon from '../components/icons/Github.astro';
 import LinkedinIcon from '../components/icons/Linkedin.astro';
 import EmailIcon from '../components/icons/Email.astro';
-import Stack from '../components/Stack.astro';
+import CodeIcon from '../components/icons/Code.astro';
 
 const linkElements = [
   {
@@ -104,6 +106,14 @@ const linkElements = [
           Stack
         </SectionTitle>
         <Stack />
+      </SectionContainer>
+
+      <SectionContainer>
+        <SectionTitle>
+          <CodeIcon class="size-8" />
+          Proyectos
+        </SectionTitle>
+        <Projects />
       </SectionContainer>
     </div>
   </main>
