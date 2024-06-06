@@ -3,35 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import Experiencie from '../components/Experience.astro';
-import Badge from '../components/Badge.astro';
-import Button from '../components/Button.astro';
 import Stack from '../components/Stack.astro';
 import Projects from '../components/Projects.astro';
+import Intro from '../components/Intro.astro';
+import AboutMe from '../components/AboutMe.astro';
 import BriefcaseIcon from '../components/icons/Briefcase.astro';
 import StackIcon from '../components/icons/Stack.astro';
-import GithubIcon from '../components/icons/Github.astro';
-import LinkedinIcon from '../components/icons/Linkedin.astro';
-import EmailIcon from '../components/icons/Email.astro';
 import CodeIcon from '../components/icons/Code.astro';
-
-const linkElements = [
-  {
-    name: 'Github',
-    icon: GithubIcon,
-    url: 'https://github.com/MarioMS90',
-  },
-  {
-    name: 'LinkedIn',
-    icon: LinkedinIcon,
-    url: 'https://www.linkedin.com/in/mario-m-5903a4a6/',
-  },
-  {
-    name: 'Email',
-    icon: EmailIcon,
-    url: 'mailto:j.mario.msx@gmail.com',
-    class: 'size-[1.2rem]',
-  },
-];
+import UserIcon from '../components/icons/User.astro';
 ---
 
 <Layout
@@ -40,55 +19,7 @@ const linkElements = [
 >
   <main class="px-4">
     <SectionContainer class="py-28 md:py-40">
-      <div
-        class="max-w-[746px] flex flex-col-reverse md:flex-row items-start md:items-center md:justify-between relative"
-      >
-        <div class="max-w-lg">
-          <a
-            href="https://www.linkedin.com/in/mario-m-5903a4a6/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block transition md:hover:scale-105 md:mb-6 absolute md:static top-6 left-28"
-          >
-            <Badge>Disponible para empleo</Badge>
-          </a>
-          <h2 class="font-inter text-xl font-medium text-secondary">
-            Hola! Soy
-          </h2>
-          <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
-          <p
-            class="text-2xl
-            font-semibold
-            leading-8 py-6 md:py-7
-            [&>strong]:text-secondary [&>strong]:font-semibold"
-          >
-            Un apasionado desarrollador especializado en
-            <strong>frontend con +3 años de experiencia</strong> y con sede en Málaga,
-            España.
-          </p>
-          <div class="flex items-center gap-2 md:gap-7">
-            {
-              linkElements.map(link => (
-                <Button href={link.url}>
-                  <link.icon class={`size-4 text-secondary ${link.class}`} />
-                  {link.name}
-                </Button>
-              ))
-            }
-          </div>
-        </div>
-        <div class="flex flex-col items-center">
-          <div
-            class="size-20 md:size-44 mb-4 md:mb-0 rounded-full overflow-hidden"
-          >
-            <img
-              class="size-full object-cover"
-              src="/images/mario.webp"
-              alt="Mario Muñoz Frontend Developer"
-            />
-          </div>
-        </div>
-      </div>
+      <Intro />
     </SectionContainer>
 
     <div class="space-y-24 md:space-y-28">
@@ -115,11 +46,14 @@ const linkElements = [
         </SectionTitle>
         <Projects />
       </SectionContainer>
+
+      <SectionContainer>
+        <SectionTitle>
+          <UserIcon class="size-8" />
+          Sobre mí
+        </SectionTitle>
+        <AboutMe />
+      </SectionContainer>
     </div>
   </main>
-
-  <style>
-    main {
-    }
-  </style>
 </Layout>

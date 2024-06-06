@@ -68,14 +68,16 @@ const stack = [
         <h3 class="mb-7 text-xl font-inter font-semibold text-primary dark:text-white">
           {stackGroup.title}
         </h3>
-        <div class="flex gap-8 md:gap-10 flex-wrap">
+        <ul class="flex gap-8 md:gap-10 flex-wrap">
           {stackGroup.items.map(item => (
-            <StackElement>
-              <item.icon class="h-7 md:h-8" />
-              {item.name}
-            </StackElement>
+            <li>
+              <StackElement>
+                <item.icon class="h-7 md:h-8" />
+                {item.name}
+              </StackElement>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     ))
   }

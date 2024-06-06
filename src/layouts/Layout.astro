@@ -3,6 +3,7 @@ import '@fontsource-variable/inter';
 import '@fontsource-variable/open-sans';
 
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -25,6 +26,7 @@ const { title, description } = Astro.props;
   <body>
     <Header />
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global>
@@ -42,8 +44,6 @@ const { title, description } = Astro.props;
     flex-direction: column;
     scroll-behavior: smooth;
     color: var(--color-primary);
-
-    padding-bottom: 400px;
   }
 
   @media (prefers-color-scheme: dark) {

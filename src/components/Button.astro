@@ -8,11 +8,14 @@
     font-semibold
     py-2 px-5 md:px-7 
     gap-2 rounded-lg
-    text-sm md:text-base md:hover:animate-pop
+    cursor-pointer
+    text-sm md:text-base transition 
+    opacity-100 md:hover:opacity-70
+    ${Astro.props.class}
     `}
-  {...Astro.props}
   target="_blank"
   rel="noopener noreferrer"
+  {...Astro.props}
 >
   <slot />
 </a>

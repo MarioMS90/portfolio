@@ -1,4 +1,5 @@
 ---
+import Button from '../components/Button.astro';
 import AngularIcon from '../components/icons/technologies/Angular.astro';
 import AstroIcon from './icons/technologies/AstroIcon.astro';
 import TypescriptIcon from '../components/icons/technologies/Typescript.astro';
@@ -8,51 +9,53 @@ import NextJSIcon from '../components/icons/technologies/Next.js.astro';
 import LaravelIcon from '../components/icons/technologies/Laravel.astro';
 import PythonIcon from '../components/icons/technologies/Python.astro';
 import TailwindIcon from '../components/icons/technologies/Tailwind.astro';
+import AppWindowIcon from './icons/AppWindow.astro';
+import GithubIcon from './icons/Github.astro';
 
 const TAGS = {
   ANGULAR: {
     name: 'Angular',
-    color: '#DD003133',
+    className: 'bg-[#DD003133] text-[#DD0031]',
     icon: AngularIcon,
   },
   ASTRO: {
     name: 'Astro',
-    color: '#1E1B44',
+    className: 'bg-[#1E1B4433] text-[#1E1B44]',
     icon: AstroIcon,
   },
   TYPESCRIPT: {
     name: 'Typescript',
-    color: '#3178C6',
+    className: 'bg-[#3178C633] text-[#3178C6]',
     icon: TypescriptIcon,
   },
   JAVASCRIPT: {
     name: 'Javascript',
-    color: '#F7DF1E',
+    className: 'bg-[#F7DF1E33] text-[#F7DF1E]',
     icon: JavascriptIcon,
   },
   REACT: {
     name: 'React',
-    color: '#149ECA',
+    className: 'bg-[#149ECA33] text-[#149ECA]',
     icon: ReactIcon,
   },
   NEXTJS: {
     name: 'Next.js',
-    color: '#000000',
+    className: 'bg-[#00000033] text-[#000000]',
     icon: NextJSIcon,
   },
   LARAVEL: {
     name: 'Laravel',
-    color: '#FF2D20',
+    className: 'bg-[#FF2D2033] text-[#FF2D20]',
     icon: LaravelIcon,
   },
   PYTHON: {
     name: 'Python',
-    color: '#FFD43B',
+    className: 'bg-[#5A9FD433] text-[#5A9FD4]',
     icon: PythonIcon,
   },
   TAILWIND: {
     name: 'Tailwind',
-    color: '#38BDF8',
+    className: 'bg-[#38BDF833] text-[#38BDF8]',
     icon: TailwindIcon,
   },
 };
@@ -65,7 +68,6 @@ const projects = [
                   o el algoritmo de sugerencias de amistad y publicaciones.`,
     picture: '/images/pictopeer.webp',
     tags: [TAGS.ANGULAR, TAGS.LARAVEL],
-    demo: '',
     source: 'https://github.com/MarioMS90/Pictopeer',
   },
   {
@@ -82,27 +84,47 @@ const projects = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     picture: '/images/pictopeer.webp',
-    tags: [TAGS.PYTHON],
+    tags: [TAGS.PYTHON, TAGS.ASTRO],
     demo: '/',
     source: 'https://github.com/MarioMS90/Pictopeer',
   },
 ];
 ---
 
-<div class="flex gap-y-8 md:gap-y-12 justify-between">
+<div class="flex flex-wrap gap-y-10 lg:gap-y-14 justify-between">
   {
-    projects.map(project => (
-      <article class="bg-white p-6 rounded-xl">
-        <div class="w-[100%] h-[40%] overflow-hidden rounded-sm">
-          <img
-            class="size-full object-cover"12
-            src={project.picture}
-            alt={project.name}
-          />
+    projects.map(({ picture, name, tags, description, demo, source }) => (
+      <article class="md:max-w-[calc(50%-20px)] lg:max-w-[calc(50%-28px)] h-max md:h-[540px] bg-white rounded-xl relative">
+        <div class="w-full h-56 md:h-60 overflow-hidden rounded-sm rounded-tl-xl rounded-tr-xl">
+          <img class="size-full object-cover" src={picture} alt={name} />
         </div>
-        <h3>{project.name}</h3>
-
-        <p>{project.description}</p>
+        <div class="content-wrapper p-5 flex flex-col gap-4 lg:gap56">
+          <h3 class="font-bold text-2xl font-inter text-primary">{name}</h3>
+          <ul class="flex flex-wrap items-center gap-2">
+            {tags.map(tag => (
+              <li
+                class={`flex py-1 px-3 items-center gap-1 rounded-full ${tag.className} text-white`}>
+                <tag.icon class="h-3" />
+                <span class={`text-xs font-semibold`}>{tag.name}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="leading-6">{description}</p>
+        </div>
+        <div class="flex justify-between px-5 mt-4 mb-6 md:absolute md:mt-0 md:mb-0 left-0 bottom-6 w-full">
+          {demo && (
+            <Button href={demo} class="w-[44%]">
+              <AppWindowIcon class="h-5 text-secondary" />
+              Demo
+            </Button>
+          )}
+          {source && (
+            <Button class="w-[44%]">
+              <GithubIcon class="h-4 text-secondary" />
+              Código
+            </Button>
+          )}
+        </div>
       </article>
     ))
   }
