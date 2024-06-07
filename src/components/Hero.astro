@@ -1,28 +1,9 @@
 ---
-import Badge from '../components/Badge.astro';
-import Button from '../components/Button.astro';
-import GithubIcon from '../components/icons/Github.astro';
-import LinkedinIcon from '../components/icons/Linkedin.astro';
-import EmailIcon from '../components/icons/Email.astro';
-
-const linkElements = [
-  {
-    name: 'Github',
-    icon: GithubIcon,
-    url: 'https://github.com/MarioMS90',
-  },
-  {
-    name: 'LinkedIn',
-    icon: LinkedinIcon,
-    url: 'https://www.linkedin.com/in/mario-m-5903a4a6/',
-  },
-  {
-    name: 'Email',
-    icon: EmailIcon,
-    url: 'mailto:j.mario.msx@gmail.com',
-    iconClass: 'size-[1.2rem]',
-  },
-];
+import { Image } from 'astro:assets';
+import marioImage from '../assets/mario.webp';
+import Badge from '@/components/Badge.astro';
+import Button from '@/components/Button.astro';
+import { SOCIAL_BUTTONS } from '@/constants/social-buttons';
 ---
 
 <div
@@ -51,10 +32,10 @@ const linkElements = [
     </p>
     <div class="flex items-center gap-2 md:gap-7">
       {
-        linkElements.map(link => (
+        SOCIAL_BUTTONS.map(link => (
           <Button
             href={link.url}
-            class="md:hover:animate-pop md:hover:opacity-100">
+            class="md:hover:animate-pop md:hover:opacity-100 dark:bg-black-1 bg-primary">
             <link.icon class={`size-4 text-secondary ${link.iconClass}`} />
             {link.name}
           </Button>
@@ -64,10 +45,11 @@ const linkElements = [
   </div>
   <div class="flex flex-col items-center">
     <div class="size-20 md:size-44 mb-4 md:mb-0 rounded-full overflow-hidden">
-      <img
+      <Image
         class="size-full object-cover"
-        src="/images/mario.webp"
+        src={marioImage}
         alt="Mario Muñoz Frontend Developer"
+        loading="eager"
       />
     </div>
   </div>

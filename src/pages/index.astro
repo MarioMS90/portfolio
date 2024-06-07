@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SectionContainer from '../components/SectionContainer.astro';
-import SectionTitle from '../components/SectionTitle.astro';
-import Experiencie from '../components/Experience.astro';
-import Stack from '../components/Stack.astro';
-import Projects from '../components/Projects.astro';
-import Intro from '../components/Intro.astro';
-import AboutMe from '../components/AboutMe.astro';
-import BriefcaseIcon from '../components/icons/Briefcase.astro';
-import StackIcon from '../components/icons/Stack.astro';
-import CodeIcon from '../components/icons/Code.astro';
-import UserIcon from '../components/icons/User.astro';
+import Layout from '@/layouts/Layout.astro';
+import SectionContainer from '@/components/SectionContainer.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import Experiencie from '@/components/Experience.astro';
+import Stack from '@/components/Stack.astro';
+import Projects from '@/components/Projects.astro';
+import Hero from '@/components/Hero.astro';
+import AboutMe from '@/components/AboutMe.astro';
+import BriefcaseIcon from '@/components/icons/Briefcase.astro';
+import StackIcon from '@/components/icons/Stack.astro';
+import CodeIcon from '@/components/icons/Code.astro';
+import UserIcon from '@/components/icons/User.astro';
 ---
 
 <Layout
@@ -18,38 +18,38 @@ import UserIcon from '../components/icons/User.astro';
   description="Contacta con Mario Muñoz, Frontend Developer, para trabajar en tu proyecto."
 >
   <main class="px-4">
-    <SectionContainer class="py-28 md:py-40">
-      <Intro />
+    <SectionContainer class="py-28 md:py-40" id="hero">
+      <Hero />
     </SectionContainer>
 
     <div class="space-y-24 md:space-y-28">
-      <SectionContainer>
+      <SectionContainer id="experience">
         <SectionTitle>
-          <BriefcaseIcon class="size-8" />
+          <BriefcaseIcon class="size-8 text-secondary" />
           Experiencia
         </SectionTitle>
         <Experiencie />
       </SectionContainer>
 
-      <SectionContainer>
+      <SectionContainer id="stack">
         <SectionTitle>
-          <StackIcon class="size-8" />
+          <StackIcon class="size-8 text-secondary" />
           Stack
         </SectionTitle>
         <Stack />
       </SectionContainer>
 
-      <SectionContainer>
+      <SectionContainer id="projects">
         <SectionTitle>
-          <CodeIcon class="size-8" />
+          <CodeIcon class="size-8 text-secondary" />
           Proyectos
         </SectionTitle>
         <Projects />
       </SectionContainer>
 
-      <SectionContainer>
+      <SectionContainer id="about-me">
         <SectionTitle>
-          <UserIcon class="size-8" />
+          <UserIcon class="size-8 text-secondary" />
           Sobre mí
         </SectionTitle>
         <AboutMe />

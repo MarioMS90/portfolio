@@ -5,13 +5,12 @@ export default {
   darkMode: 'selector',
   theme: {
     extend: {
-      screens: {
-        //xl: '1140px',
-      },
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
         'black-1': 'var(--color-black-1)',
+        'header-light': 'rgba(var(--color-background-light), 0.6)',
+        'header-dark': 'rgba(var(--color-primary), 0.6)',
       },
       fontFamily: {
         inter: ['Inter Variable', 'system-ui', 'sans-serif'],

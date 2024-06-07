@@ -1,109 +1,31 @@
 ---
-import Button from '../components/Button.astro';
-import AngularIcon from '../components/icons/technologies/Angular.astro';
-import AstroIcon from './icons/technologies/AstroIcon.astro';
-import TypescriptIcon from '../components/icons/technologies/Typescript.astro';
-import JavascriptIcon from '../components/icons/technologies/Javascript.astro';
-import ReactIcon from '../components/icons/technologies/React.astro';
-import NextJSIcon from '../components/icons/technologies/Next.js.astro';
-import LaravelIcon from '../components/icons/technologies/Laravel.astro';
-import PythonIcon from '../components/icons/technologies/Python.astro';
-import TailwindIcon from '../components/icons/technologies/Tailwind.astro';
-import AppWindowIcon from './icons/AppWindow.astro';
-import GithubIcon from './icons/Github.astro';
-
-const TAGS = {
-  ANGULAR: {
-    name: 'Angular',
-    className: 'bg-[#DD003133] text-[#DD0031]',
-    icon: AngularIcon,
-  },
-  ASTRO: {
-    name: 'Astro',
-    className: 'bg-[#1E1B4433] text-[#1E1B44]',
-    icon: AstroIcon,
-  },
-  TYPESCRIPT: {
-    name: 'Typescript',
-    className: 'bg-[#3178C633] text-[#3178C6]',
-    icon: TypescriptIcon,
-  },
-  JAVASCRIPT: {
-    name: 'Javascript',
-    className: 'bg-[#F7DF1E33] text-[#F7DF1E]',
-    icon: JavascriptIcon,
-  },
-  REACT: {
-    name: 'React',
-    className: 'bg-[#149ECA33] text-[#149ECA]',
-    icon: ReactIcon,
-  },
-  NEXTJS: {
-    name: 'Next.js',
-    className: 'bg-[#00000033] text-[#000000]',
-    icon: NextJSIcon,
-  },
-  LARAVEL: {
-    name: 'Laravel',
-    className: 'bg-[#FF2D2033] text-[#FF2D20]',
-    icon: LaravelIcon,
-  },
-  PYTHON: {
-    name: 'Python',
-    className: 'bg-[#5A9FD433] text-[#5A9FD4]',
-    icon: PythonIcon,
-  },
-  TAILWIND: {
-    name: 'Tailwind',
-    className: 'bg-[#38BDF833] text-[#38BDF8]',
-    icon: TailwindIcon,
-  },
-};
-
-const projects = [
-  {
-    name: 'Pictopeer',
-    description: `Una red social para publicar y compartir imágenes, 
-                  con características basadas en Instagram como el feed 
-                  o el algoritmo de sugerencias de amistad y publicaciones.`,
-    picture: '/images/pictopeer.webp',
-    tags: [TAGS.ANGULAR, TAGS.LARAVEL],
-    source: 'https://github.com/MarioMS90/Pictopeer',
-  },
-  {
-    name: 'Proyecto 2',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    picture: '/images/pictopeer.webp',
-    tags: [TAGS.NEXTJS, TAGS.REACT, TAGS.TAILWIND, TAGS.TYPESCRIPT],
-    demo: '/',
-    source: 'https://github.com/MarioMS90/Pictopeer',
-  },
-  {
-    name: 'Proyecto 3',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    picture: '/images/pictopeer.webp',
-    tags: [TAGS.PYTHON, TAGS.ASTRO],
-    demo: '/',
-    source: 'https://github.com/MarioMS90/Pictopeer',
-  },
-];
+import Button from '@/components/Button.astro';
+import AppWindowIcon from '@/components/icons/AppWindow.astro';
+import GithubIcon from '@/components/icons/Github.astro';
+import { PROJECTS } from '@/constants/projects.ts';
+import { Image } from 'astro:assets';
 ---
 
 <div class="flex flex-wrap gap-y-10 lg:gap-y-14 justify-between">
   {
-    projects.map(({ picture, name, tags, description, demo, source }) => (
-      <article class="md:max-w-[calc(50%-20px)] lg:max-w-[calc(50%-28px)] h-max md:h-[540px] bg-white rounded-xl relative">
+    PROJECTS.map(({ picture, name, tags, description, demo, source }) => (
+      <article class="md:max-w-[calc(50%-20px)] lg:max-w-[calc(50%-28px)] h-max md:h-[540px] dark:bg-black-1 bg-white rounded-xl relative shadow-md">
         <div class="w-full h-56 md:h-60 overflow-hidden rounded-sm rounded-tl-xl rounded-tr-xl">
-          <img class="size-full object-cover" src={picture} alt={name} />
+          <Image
+            class="size-full object-cover"
+            src={picture}
+            alt={name}
+            loading="eager"
+          />
         </div>
         <div class="content-wrapper p-5 flex flex-col gap-4 lg:gap56">
-          <h3 class="font-bold text-2xl font-inter text-primary">{name}</h3>
+          <h3 class="font-bold text-2xl font-inter dark:text-white text-primary">
+            {name}
+          </h3>
           <ul class="flex flex-wrap items-center gap-2">
             {tags.map(tag => (
               <li
-                class={`flex py-1 px-3 items-center gap-1 rounded-full ${tag.className} text-white`}>
+                class={`flex py-1 px-3 items-center gap-1 rounded-full ${tag.className}`}>
                 <tag.icon class="h-3" />
                 <span class={`text-xs font-semibold`}>{tag.name}</span>
               </li>
@@ -113,14 +35,16 @@ const projects = [
         </div>
         <div class="flex justify-between px-5 mt-4 mb-6 md:absolute md:mt-0 md:mb-0 left-0 bottom-6 w-full">
           {demo && (
-            <Button href={demo} class="w-[44%]">
+            <Button
+              href={demo}
+              class="w-[44%] dark:white bg-white text-primary border border-primary">
               <AppWindowIcon class="h-5 text-secondary" />
-              Demo
+              <span class="text-primary">Demo</span>
             </Button>
           )}
           {source && (
-            <Button class="w-[44%]">
-              <GithubIcon class="h-4 text-secondary" />
+            <Button href={source} class="w-[44%] bg-primary">
+              <GithubIcon class="h-4 text-secondary " />
               Código
             </Button>
           )}

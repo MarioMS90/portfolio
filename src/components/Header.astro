@@ -1,53 +1,79 @@
 ---
-import DarkModeIcon from './icons/DarkMode.astro';
-import LightModeIcon from './icons/LightMode.astro';
-
-const navItems = [
-  {
-    title: 'Inicio',
-    url: '/#inicio',
-    class: 'hidden md:block',
-  },
-  {
-    title: 'Experiencia',
-    url: '/#experiencia',
-  },
-  {
-    title: 'Stack',
-    url: '/#stack',
-  },
-  {
-    title: 'Proyectos',
-    url: '/#proyectos',
-  },
-  {
-    title: 'Sobre mí',
-    url: '/#sobre-mi',
-  },
-  {
-    title: 'Contacto',
-    url: '/#contacto',
-    class: 'hidden md:block',
-  },
-];
+import { NAV_ITEMS } from '@/constants/nav-items';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header class="w-full px-4 font-inter font-medium py-4 fixed top-0 z-10">
   <div
     class="flex gap-3 md:gap-0 justify-center md:justify-between items-center mx-auto lg:max-w-4xl md:max-w-3xl"
   >
-    <div class="text-2xl hidden md:block">
+    <h1 class="text-2xl hidden md:block">
       mario<span class="font-bold text-secondary">.dev</span>
-    </div>
+    </h1>
     <nav class="flex gap-3 md:gap-4 text-base">
       {
-        navItems.map(item => (
-          <a href={item.url} class={item.class}>
+        NAV_ITEMS.map(item => (
+          <a href={item.url} class={item.class} aria-label={item.title}>
             {item.title}
           </a>
         ))
       }
     </nav>
-    <DarkModeIcon id="dark-mode" class="h-5 md:h-7" />
+    <ThemeToggle />
   </div>
 </header>
+
+<style>
+  header {
+    animation: header-shadow 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes header-shadow {
+    to {
+      @apply shadow-md backdrop-blur-xl dark:bg-header-dark bg-header-light;
+    }
+  }
+</style>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('header nav a');
+
+  const callback = (entries: IntersectionObserverEntry[]): void => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => {
+          if (item.getAttribute('href') == `/#${entry.target.id}`) {
+            item.classList.add('text-secondary');
+          } else {
+            item.classList.remove('text-secondary');
+          }
+        });
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3,
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Cleanup function
+  document.onvisibilitychange = () => {
+    if (document.visibilityState === 'hidden') {
+      observer.disconnect();
+      return;
+    }
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  };
+</script>

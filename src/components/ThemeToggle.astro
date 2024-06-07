@@ -1,0 +1,53 @@
+---
+import DarkModeIcon from './icons/DarkMode.astro';
+import LightModeIcon from './icons/LightMode.astro';
+---
+
+<div id="theme-toggle-button">
+  <DarkModeIcon
+    id="dark"
+    class="theme-toggle-icon dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
+  />
+  <LightModeIcon
+    id="light"
+    class="theme-toggle-icon dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
+  />
+</div>
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  };
+
+  const updateIcon = themePreference => {
+    document.querySelectorAll('.theme-toggle-icon').forEach(element => {
+      element.style.display = element.id === themePreference ? 'none' : 'block';
+    });
+  };
+
+  const updateTheme = () => {
+    const themePreference = getThemePreference();
+    const isDark = themePreference === 'dark';
+
+    updateIcon(themePreference);
+    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+  };
+
+  updateTheme();
+
+  const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  matchMedia.addEventListener('change', updateTheme);
+
+  document
+    .getElementById('theme-toggle-button')
+    .addEventListener('click', e => {
+      localStorage.setItem('theme', e.target.id);
+      updateTheme();
+    });
+</script>
