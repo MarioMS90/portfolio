@@ -27,18 +27,10 @@ import ThemeToggle from './ThemeToggle.astro';
     </div>
   </div>
 </header>
-<div>hola</div>
-<style>
-  header {
-    animation: header-shadow 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 500px;
-  }
 
-  @keyframes header-shadow {
-    to {
-      @apply shadow-md backdrop-blur-xl dark:bg-header-dark bg-header-light;
-    }
+<style>
+  .scrolled {
+    @apply shadow-md backdrop-blur-xl dark:bg-header-dark bg-header-light;
   }
 </style>
 
@@ -81,4 +73,15 @@ import ThemeToggle from './ThemeToggle.astro';
       observer.observe(section);
     });
   };
+
+  const header = document.querySelector('header');
+  if (header) {
+    document.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
 </script>
