@@ -6,12 +6,26 @@ import LightModeIcon from './icons/LightMode.astro';
 <div class="theme-toggle-button">
   <span class="theme-toggle-icon" data-theme="dark">
     <DarkModeIcon
-      class="dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
+      class={`
+        h-4
+        cursor-pointer
+        transition
+        hover:scale-110
+        md:h-7
+        dark:text-white
+      `}
     />
   </span>
   <span class="theme-toggle-icon" data-theme="light">
     <LightModeIcon
-      class="dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
+      class={`
+        h-5
+        cursor-pointer
+        transition
+        hover:scale-110
+        md:h-7
+        dark:text-white
+      `}
     />
   </span>
 </div>

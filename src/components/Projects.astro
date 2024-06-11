@@ -6,11 +6,24 @@ import { PROJECTS } from '@/constants/projects.ts';
 import { Image } from 'astro:assets';
 ---
 
-<div class="flex flex-wrap gap-y-10 lg:gap-y-14 justify-between">
+<div class="flex flex-wrap justify-between gap-y-10 lg:gap-y-14">
   {
     PROJECTS.map(({ picture, name, tags, description, demo, source }) => (
-      <article class="md:max-w-[calc(50%-20px)] lg:max-w-[calc(50%-28px)] h-max md:h-[540px] dark:bg-black-1 bg-white rounded-xl relative shadow-md">
-        <div class="w-full h-56 md:h-60 overflow-hidden rounded-tl-xl rounded-tr-xl">
+      <article
+        class="relative
+        h-max
+        rounded-xl 
+        bg-white 
+        shadow-md 
+        md:h-[540px] md:max-w-[calc(50%-20px)] 
+        lg:max-w-[calc(50%-28px)] 
+        dark:bg-black-1">
+        <div
+          class="h-56 
+          w-full 
+          overflow-hidden 
+          rounded-tl-xl rounded-tr-xl 
+          md:h-60">
           <Image
             class="size-full object-cover"
             src={picture}
@@ -18,26 +31,49 @@ import { Image } from 'astro:assets';
             loading="eager"
           />
         </div>
-        <div class="content-wrapper flex flex-col p-5 gap-4 lg:gap56">
-          <h3 class="font-bold text-2xl font-inter dark:text-white text-primary">
+        <div
+          class="content-wrapper 
+          lg:gap56 
+          flex flex-col gap-4 
+          p-5">
+          <h3 class="font-inter text-2xl font-bold text-primary dark:text-white">
             {name}
           </h3>
           <ul class="flex flex-wrap items-center gap-2">
             {tags.map(tag => (
               <li
-                class={`flex py-1 px-3 items-center gap-1 rounded-full ${tag.className}`}>
+                class={`
+                  flex items-center gap-1 
+                  rounded-full 
+                  px-3 py-1 
+                  ${tag.className}
+                `}>
                 <tag.icon class="h-3" />
-                <span class={`text-xs font-semibold`}>{tag.name}</span>
+                <span class="text-xs font-semibold">{tag.name}</span>
               </li>
             ))}
           </ul>
           <p class="leading-6">{description}</p>
         </div>
-        <div class="flex justify-between px-5 mt-4 mb-6 md:absolute md:mt-0 md:mb-0 left-0 bottom-6 w-full">
+        <div
+          class="bottom-6 left-0 
+            mb-6 mt-4 
+            flex 
+            w-full 
+            justify-between 
+            px-5 
+            md:absolute md:mb-0 md:mt-0">
           {demo && (
             <Button
               href={demo}
-              className="w-[44%] dark:white bg-white text-primary border border-primary opacity-100 dark:md:hover:opacity-90 md:hover:opacity-70">
+              class={`
+                dark:white 
+                w-[44%]
+                border
+                border-primary 
+                bg-white text-primary 
+                opacity-100 md:hover:opacity-70 dark:md:hover:opacity-90
+              `}>
               <AppWindowIcon class="h-5 text-secondary" />
               <span class="text-primary">Demo</span>
             </Button>
@@ -45,8 +81,12 @@ import { Image } from 'astro:assets';
           {source && (
             <Button
               href={source}
-              className="w-[44%] bg-primary opacity-100 dark:md:hover:opacity-90 md:hover:opacity-70">
-              <GithubIcon class="h-4 text-secondary " />
+              className={`
+                w-[44%] 
+                bg-primary 
+                opacity-100 md:hover:opacity-70 dark:md:hover:opacity-90
+                `}>
+              <GithubIcon class="h-4 text-secondary" />
               Código
             </Button>
           )}

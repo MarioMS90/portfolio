@@ -1,7 +1,6 @@
 import type { NavItem } from '@/types/NavItem';
 
 export const NAV_ITEMS: NavItem[] = [
-  //url attr in english always
   {
     title: 'Inicio',
     url: '/#hero',

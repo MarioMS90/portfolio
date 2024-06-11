@@ -4,9 +4,7 @@
     "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   }
 }

@@ -7,9 +7,13 @@ export interface experience {
 const { id, className } = Astro.props;
 ---
 
-<section id={id} class=`
+<section
+  id={id}
+  class={`
   mx-auto
-  lg:max-w-4xl md:max-w-3xl 
-  ${className}`>
+  md:max-w-3xl lg:max-w-4xl 
+  ${className}
+  `}
+>
   <slot />
 </section>

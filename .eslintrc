@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "prettier",
+        "eslint-plugin-astro/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "extraFileExtensions": [".astro"]
+    }
+} 

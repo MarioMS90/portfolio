@@ -10,16 +10,16 @@ const { href, className } = Astro.props;
 <a
   href={href}
   class={`
-    font-inter 
     inline-flex
+    cursor-pointer
     items-center
     justify-center
+    gap-2
+    rounded-lg
+    px-5 py-2 
+    font-inter text-sm font-semibold
     text-white
-    font-semibold
-    py-2 px-5 md:px-7 
-    gap-2 rounded-lg
-    cursor-pointer
-    text-sm md:text-base transition 
+    transition md:px-7 md:text-base 
     ${className}
     `}
   target="_blank"
