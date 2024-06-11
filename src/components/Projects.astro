@@ -10,7 +10,7 @@ import { Image } from 'astro:assets';
   {
     PROJECTS.map(({ picture, name, tags, description, demo, source }) => (
       <article class="md:max-w-[calc(50%-20px)] lg:max-w-[calc(50%-28px)] h-max md:h-[540px] dark:bg-black-1 bg-white rounded-xl relative shadow-md">
-        <div class="w-full h-56 md:h-60 overflow-hidden rounded-sm rounded-tl-xl rounded-tr-xl">
+        <div class="w-full h-56 md:h-60 overflow-hidden rounded-tl-xl rounded-tr-xl">
           <Image
             class="size-full object-cover"
             src={picture}
@@ -18,7 +18,7 @@ import { Image } from 'astro:assets';
             loading="eager"
           />
         </div>
-        <div class="content-wrapper p-5 flex flex-col gap-4 lg:gap56">
+        <div class="content-wrapper flex flex-col p-5 gap-4 lg:gap56">
           <h3 class="font-bold text-2xl font-inter dark:text-white text-primary">
             {name}
           </h3>
@@ -37,13 +37,15 @@ import { Image } from 'astro:assets';
           {demo && (
             <Button
               href={demo}
-              class="w-[44%] dark:white bg-white text-primary border border-primary">
+              className="w-[44%] dark:white bg-white text-primary border border-primary opacity-100 dark:md:hover:opacity-90 md:hover:opacity-70">
               <AppWindowIcon class="h-5 text-secondary" />
               <span class="text-primary">Demo</span>
             </Button>
           )}
           {source && (
-            <Button href={source} class="w-[44%] bg-primary">
+            <Button
+              href={source}
+              className="w-[44%] bg-primary opacity-100 dark:md:hover:opacity-90 md:hover:opacity-70">
               <GithubIcon class="h-4 text-secondary " />
               Código
             </Button>

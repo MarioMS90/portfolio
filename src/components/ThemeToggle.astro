@@ -3,18 +3,20 @@ import DarkModeIcon from './icons/DarkMode.astro';
 import LightModeIcon from './icons/LightMode.astro';
 ---
 
-<div id="theme-toggle-button">
-  <DarkModeIcon
-    id="dark"
-    class="theme-toggle-icon dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
-  />
-  <LightModeIcon
-    id="light"
-    class="theme-toggle-icon dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
-  />
+<div class="theme-toggle-button">
+  <span class="theme-toggle-icon" data-theme="dark">
+    <DarkModeIcon
+      class="dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
+    />
+  </span>
+  <span class="theme-toggle-icon" data-theme="light">
+    <LightModeIcon
+      class="dark:text-white h-5 md:h-7 cursor-pointer transition hover:scale-110"
+    />
+  </span>
 </div>
 
-<script is:inline>
+<script>
   const getThemePreference = () => {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme');
@@ -25,9 +27,12 @@ import LightModeIcon from './icons/LightMode.astro';
       : 'light';
   };
 
-  const updateIcon = themePreference => {
+  const updateIcon = (themePreference: string | null) => {
     document.querySelectorAll('.theme-toggle-icon').forEach(element => {
-      element.style.display = element.id === themePreference ? 'none' : 'block';
+      if (element instanceof HTMLElement) {
+        element.style.display =
+          element.dataset.theme === themePreference ? 'none' : 'block';
+      }
     });
   };
 
@@ -44,10 +49,17 @@ import LightModeIcon from './icons/LightMode.astro';
   const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
   matchMedia.addEventListener('change', updateTheme);
 
-  document
-    .getElementById('theme-toggle-button')
-    .addEventListener('click', e => {
-      localStorage.setItem('theme', e.target.id);
-      updateTheme();
+  document.querySelectorAll('.theme-toggle-button').forEach(element => {
+    element.addEventListener('click', e => {
+      if (!(e.target instanceof Element)) {
+        return;
+      }
+
+      const parent = e.target.closest('.theme-toggle-icon');
+      if (parent instanceof HTMLElement && parent.dataset.theme) {
+        localStorage.setItem('theme', parent.dataset.theme);
+        updateTheme();
+      }
     });
+  });
 </script>

@@ -5,12 +5,12 @@ import ThemeToggle from './ThemeToggle.astro';
 
 <header class="w-full px-4 font-inter font-medium py-4 fixed top-0 z-10">
   <div
-    class="flex gap-3 md:gap-0 justify-center md:justify-between items-center mx-auto lg:max-w-4xl md:max-w-3xl"
+    class="block md:flex justify-between items-center mx-auto lg:max-w-4xl md:max-w-3xl"
   >
     <h1 class="text-2xl hidden md:block">
-      mario<span class="font-bold text-secondary">.dev</span>
+      frontmario<span class="font-bold text-secondary">.dev</span>
     </h1>
-    <nav class="flex gap-3 md:gap-4 text-base">
+    <nav class="flex items-center justify-between gap-0 md:gap-4 text-base">
       {
         NAV_ITEMS.map(item => (
           <a href={item.url} class={item.class} aria-label={item.title}>
@@ -18,8 +18,13 @@ import ThemeToggle from './ThemeToggle.astro';
           </a>
         ))
       }
+      <div class="md:hidden">
+        <ThemeToggle />
+      </div>
     </nav>
-    <ThemeToggle />
+    <div class="hidden md:block">
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 

@@ -1,9 +1,15 @@
-<section
-  class=`
+---
+export interface experience {
+  id: string;
+  className: string;
+}
+
+const { id, className } = Astro.props;
+---
+
+<section id={id} class=`
   mx-auto
   lg:max-w-4xl md:max-w-3xl 
-  ${Astro.props.class}`
-  {...Astro.props}
->
+  ${className}`>
   <slot />
 </section>
