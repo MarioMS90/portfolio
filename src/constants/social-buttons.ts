@@ -3,7 +3,7 @@ import LinkedinIcon from '@/components/icons/Linkedin.astro';
 import EmailIcon from '@/components/icons/Email.astro';
 import type { SocialButton } from '@/types/SocialButton';
 
-export const SOCIAL_BUTTONS: SocialButton[] = [
+const SOCIAL_BUTTONS: SocialButton[] = [
   {
     name: 'Github',
     icon: GithubIcon,
@@ -21,3 +21,5 @@ export const SOCIAL_BUTTONS: SocialButton[] = [
     iconClass: 'size-[1.2rem]',
   },
 ] as const;
+
+export default SOCIAL_BUTTONS;

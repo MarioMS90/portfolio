@@ -7,8 +7,8 @@ import NextJSIcon from '@/components/icons/technologies/Next.js.astro';
 import LaravelIcon from '@/components/icons/technologies/Laravel.astro';
 import PythonIcon from '@/components/icons/technologies/Python.astro';
 import TailwindIcon from '@/components/icons/technologies/Tailwind.astro';
-import pictopeerImage from '../assets/pictopeer.webp';
 import type { Project, Tag } from '@/types/Project';
+import pictopeerImage from '../assets/pictopeer.webp';
 
 const TAGS: Record<string, Tag> = {
   ANGULAR: {
@@ -58,7 +58,7 @@ const TAGS: Record<string, Tag> = {
   },
 } as const;
 
-export const PROJECTS: Project[] = [
+const PROJECTS: Project[] = [
   {
     name: 'Pictopeer',
     description: `Una red social para publicar y compartir imágenes, 
@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
     tags: [TAGS.ANGULAR, TAGS.LARAVEL],
     source: 'https://github.com/MarioMS90/Pictopeer',
   },
-  /*{
+  /* {
     name: 'Proyecto 2',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -85,5 +85,7 @@ export const PROJECTS: Project[] = [
     tags: [TAGS.PYTHON, TAGS.ASTRO],
     demo: '/',
     source: 'https://github.com/MarioMS90/Pictopeer',
-  },*/
+  }, */
 ] as const;
+
+export default PROJECTS;

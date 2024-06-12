@@ -17,7 +17,7 @@ import FigmaIcon from '@/components/icons/technologies/Figma.astro';
 import NetlifyIcon from '@/components/icons/technologies/Netlify.astro';
 import type { Stack } from '@/types/stack';
 
-export const STACK: Record<string, Stack[]> = {
+const STACK: Record<string, Stack[]> = {
   LANGUAGES: [
     { name: 'Typescript', icon: TypescriptIcon },
     { name: 'Javascript', icon: JavascriptIcon },
@@ -54,3 +54,5 @@ export const STACK: Record<string, Stack[]> = {
     },
   ],
 } as const;
+
+export default STACK;

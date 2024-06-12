@@ -1,6 +1,6 @@
 import type { NavItem } from '@/types/NavItem';
 
-export const NAV_ITEMS: NavItem[] = [
+const NAV_ITEMS: NavItem[] = [
   {
     title: 'Inicio',
     url: '/#hero',
@@ -28,3 +28,5 @@ export const NAV_ITEMS: NavItem[] = [
     class: 'hidden md:block',
   },
 ] as const;
+
+export default NAV_ITEMS;

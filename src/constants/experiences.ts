@@ -1,6 +1,6 @@
 import type { Experience } from '@/types/Experience';
 
-export const EXPERIENCES: Experience[] = [
+const EXPERIENCES: Experience[] = [
   {
     title: 'Desarrollador freelancer',
     date: 'Marzo 2024 - Actualidad',
@@ -18,3 +18,5 @@ export const EXPERIENCES: Experience[] = [
                   responsable de equipo.`,
   },
 ] as const;
+
+export default EXPERIENCES;

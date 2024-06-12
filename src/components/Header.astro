@@ -1,5 +1,5 @@
 ---
-import { NAV_ITEMS } from '@/constants/nav-items';
+import NAV_ITEMS from '@/constants/nav-items';
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
@@ -51,6 +51,10 @@ import ThemeToggle from './ThemeToggle.astro';
 <script>
   const sections = document.querySelectorAll('section');
   const navItems = document.querySelectorAll('header nav a');
+
+  const item = new Object();
+
+  var p = 'd';
 
   const callback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {
