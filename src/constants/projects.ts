@@ -9,6 +9,7 @@ import PythonIcon from '@/components/icons/technologies/Python.astro';
 import TailwindIcon from '@/components/icons/technologies/Tailwind.astro';
 import type { Project, Tag } from '@/types/Project';
 import pictopeerImage from '../assets/pictopeer.webp';
+import portfolioImage from '../assets/astro.webp';
 
 const TAGS: Record<string, Tag> = {
   ANGULAR: {
@@ -67,6 +68,14 @@ const PROJECTS: Project[] = [
     picture: pictopeerImage,
     tags: [TAGS.ANGULAR, TAGS.LARAVEL],
     source: 'https://github.com/MarioMS90/Pictopeer',
+  },
+  {
+    name: 'Portfolio',
+    description: `Un template de portfolio personal para mostrar proyectos, 
+                  habilidades y experiencia laboral, creado con Astro y Tailwind CSS.`,
+    picture: portfolioImage,
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    source: 'https://github.com/MarioMS90/portfolio',
   },
   /* {
     name: 'Proyecto 2',

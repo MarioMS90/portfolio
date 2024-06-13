@@ -11,19 +11,19 @@ import { Image } from 'astro:assets';
     PROJECTS.map(({ picture, name, tags, description, demo, source }) => (
       <article
         class="relative
-        h-max
-        rounded-xl 
-        bg-white 
-        shadow-md 
-        md:h-[540px] md:max-w-[calc(50%-20px)] 
-        lg:max-w-[calc(50%-28px)] 
-        dark:bg-black-1">
+          h-max
+          rounded-xl 
+          bg-white 
+          shadow-md 
+          md:h-[540px] md:max-w-[calc(50%-20px)] 
+          lg:max-w-[calc(50%-28px)] 
+          dark:bg-black-1">
         <div
           class="h-56 
-          w-full 
-          overflow-hidden 
-          rounded-tl-xl rounded-tr-xl 
-          md:h-60">
+            w-full 
+            overflow-hidden 
+            rounded-tl-xl rounded-tr-xl 
+            md:h-60">
           <Image
             class="size-full object-cover"
             src={picture}
@@ -33,9 +33,9 @@ import { Image } from 'astro:assets';
         </div>
         <div
           class="content-wrapper 
-          lg:gap56 
-          flex flex-col gap-4 
-          p-5">
+            lg:gap56 
+            flex flex-col gap-4 
+            p-5">
           <h3 class="font-inter text-2xl font-bold text-primary dark:text-white">
             {name}
           </h3>

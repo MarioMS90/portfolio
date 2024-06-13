@@ -3,31 +3,49 @@ import NAV_ITEMS from '@/constants/nav-items';
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header class="fixed
-  top-0
-  z-10
-  w-full
-  px-4 py-4
-  font-inter font-medium">
+<header
+  class="fixed
+          top-0
+          z-10
+          w-full
+          px-4 py-3
+          font-inter font-medium"
+>
   <div
     class="mx-auto
-    block
-    items-center
-    justify-between
-    md:flex md:max-w-3xl lg:max-w-4xl"
+      block
+      items-center
+      justify-between
+      md:flex md:max-w-3xl lg:max-w-4xl"
   >
-    <h1 class="hidden text-2xl md:block">
-      frontmario<span class="font-bold text-secondary">.dev</span>
-    </h1>
+    <a href="/" aria-label="Home">
+      <h1 class="hidden text-2xl line-through md:block">
+        mario<span class="font-bold text-secondary">.dev</span>
+      </h1></a
+    >
     <nav
       class="flex
-      items-center justify-between gap-0
-      text-base
-      md:gap-4"
+        items-center justify-between gap-0
+        text-base
+        md:gap-4"
     >
       {
         NAV_ITEMS.map(item => (
-          <a href={item.url} class={item.class} aria-label={item.title}>
+          <a
+            href={item.url}
+            class={`
+              relative
+              after:absolute 
+              after:bottom-0 
+              after:left-0
+              after:h-px
+              after:w-0
+              after:bg-primary
+              after:transition-[width]
+              md:hover:after:w-full
+              dark:after:bg-white
+              ${item.class}`}
+            aria-label={item.title}>
             {item.title}
           </a>
         ))
@@ -90,12 +108,18 @@ import ThemeToggle from './ThemeToggle.astro';
 
   const header = document.querySelector('header');
   if (header) {
-    document.addEventListener('scroll', () => {
+    const checkScroll = () => {
       if (window.scrollY > 0) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
+    };
+
+    checkScroll();
+
+    document.addEventListener('scroll', () => {
+      checkScroll();
     });
   }
 </script>
