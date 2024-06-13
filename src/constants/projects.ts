@@ -74,7 +74,8 @@ const PROJECTS: Project[] = [
     description: `Un template de portfolio personal para mostrar proyectos, 
                   habilidades y experiencia laboral, creado con Astro y Tailwind CSS.`,
     picture: portfolioImage,
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.TAILWIND],
+    demo: 'https://frontmario.dev/',
     source: 'https://github.com/MarioMS90/portfolio',
   },
   /* {
