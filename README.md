@@ -5,8 +5,10 @@
     <img src="https://github.com/MarioMS90/portfolio/assets/56683560/65da2a68-edc8-4887-9ea9-7422b5b042fb" style="max-width: 100%;">
   </a>
 </div>
+
+
+
   
-   
 <div align="center">
   
   ![Astro Badge](https://img.shields.io/badge/Astro-FF3E00?logo=astro&logoColor=fff&style=flat)
