@@ -36,7 +36,8 @@ const { title, description } = Astro.props;
     --color-secondary: #ff9f1c;
     --color-black-1: #333333;
     --color-background: #f2f5fa;
-    --color-background-dark: #1c3144;
+    --color-background-dark: linear-gradient(to bottom, #2e547d, #1c3144);
+    scroll-behavior: smooth;
 
     &.dark body {
       background: var(--color-background-dark);
