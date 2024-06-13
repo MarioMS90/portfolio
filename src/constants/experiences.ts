@@ -18,8 +18,8 @@ const EXPERIENCES: Experience[] = [
                   día de hoy se utilizan en numerosas cadenas 
                   hoteleras. 
                   <br /> <br />
-                  Por último llegúe a tener mi primera experiencia 
-                  como responsable de equipo.`,
+                  Finalmente, tuve mi primera experiencia como 
+                  responsable de equipo.`,
   },
 ] as const;
 

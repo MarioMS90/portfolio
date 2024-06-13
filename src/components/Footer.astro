@@ -15,13 +15,11 @@ import SOCIAL_BUTTONS from '@/constants/social-buttons';
     <ul class="flex items-center gap-6">
       {
         SOCIAL_BUTTONS.map(link => (
-          <>
-            <li>
-              <a href={link.url} target="_blank" aria-label={link.name}>
-                <link.icon class="h-8" />
-              </a>
-            </li>
-          </>
+          <li>
+            <a href={link.url} target="_blank" aria-label={link.name}>
+              <link.icon class="h-8" />
+            </a>
+          </li>
         ))
       }
     </ul>

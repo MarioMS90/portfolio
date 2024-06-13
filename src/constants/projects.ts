@@ -71,7 +71,7 @@ const PROJECTS: Project[] = [
   },
   {
     name: 'Portfolio',
-    description: `Un template de portfolio personal para mostrar proyectos, 
+    description: `Template de portfolio personal para mostrar proyectos, 
                   habilidades y experiencia laboral, creado con Astro y Tailwind CSS.`,
     picture: portfolioImage,
     tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.TAILWIND],

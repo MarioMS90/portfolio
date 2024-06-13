@@ -18,42 +18,40 @@ import UserIcon from '@/components/icons/User.astro';
   description="Contacta con Mario Muñoz, Frontend Developer, para trabajar en tu proyecto."
 >
   <main class="px-5">
-    <SectionContainer className="py-28 md:py-40" id="hero">
+    <SectionContainer className="pt-28 md:pt-40" id="hero">
       <Hero />
     </SectionContainer>
 
-    <div class="space-y-24 md:space-y-28">
-      <SectionContainer id="experience">
-        <SectionTitle>
-          <BriefcaseIcon class="size-8 text-secondary" />
-          Experiencia
-        </SectionTitle>
-        <Experiencie />
-      </SectionContainer>
+    <SectionContainer id="experience" className="pt-28 md:pt-40">
+      <SectionTitle>
+        <BriefcaseIcon slot="icon" />
+        Experiencia
+      </SectionTitle>
+      <Experiencie />
+    </SectionContainer>
 
-      <SectionContainer id="stack">
-        <SectionTitle>
-          <StackIcon class="size-8 text-secondary" />
-          Stack
-        </SectionTitle>
-        <Stack />
-      </SectionContainer>
+    <SectionContainer id="stack" className="pt-24 md:pt-28">
+      <SectionTitle>
+        <StackIcon slot="icon" />
+        Stack
+      </SectionTitle>
+      <Stack />
+    </SectionContainer>
 
-      <SectionContainer id="projects">
-        <SectionTitle>
-          <CodeIcon class="size-8 text-secondary" />
-          Proyectos
-        </SectionTitle>
-        <Projects />
-      </SectionContainer>
+    <SectionContainer id="projects" className="pt-24 md:pt-28">
+      <SectionTitle>
+        <CodeIcon slot="icon" />
+        Proyectos
+      </SectionTitle>
+      <Projects />
+    </SectionContainer>
 
-      <SectionContainer id="about-me">
-        <SectionTitle>
-          <UserIcon class="size-8 text-secondary" />
-          Sobre mí
-        </SectionTitle>
-        <AboutMe />
-      </SectionContainer>
-    </div>
+    <SectionContainer id="about-me" className="pt-24 md:pt-28">
+      <SectionTitle>
+        <UserIcon slot="icon" />
+        Sobre mí
+      </SectionTitle>
+      <AboutMe />
+    </SectionContainer>
   </main>
 </Layout>
