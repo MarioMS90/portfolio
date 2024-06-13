@@ -1,14 +1,15 @@
 # Dev portfolio
 
-<p align="center">
+<div align="center">
   <a href="https://frontmario.dev/">
-    <img src="https://github.com/MarioMS90/portfolio/assets/56683560/e4d69cff-d228-4501-8c29-d94100ad8258" style="max-width: 100%;">
+    <img src="https://github.com/MarioMS90/portfolio/assets/56683560/65da2a68-edc8-4887-9ea9-7422b5b042fb" style="max-width: 100%;">
   </a>
-</p>
+</div>
 
-
-This is a template portfolio for developers. It is built with [Astro](https://astro.build/), a static site generator that allows you to build faster websites.
-
+<div align="center">
+  ![Astro Badge](https://img.shields.io/badge/Astro-FF3E00?logo=astro&logoColor=fff&style=flat)
+  ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
+</div>
 
 ## Features
 
