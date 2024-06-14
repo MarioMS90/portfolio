@@ -18,11 +18,11 @@ export default {
       },
       animation: {
         pop: 'pop 0.6s ease-out',
-        'fade-in': 'fade-in 0.6s ease-in forwards',
-        'fade-in-up': 'fade-in-up 0.6s ease-in-out forwards',
-        'fade-in-right': 'fade-in-right 0.6s ease-in-out forwards',
-        'fade-in-left': 'fade-in-left 0.6s ease-in-out forwards',
-        'fade-in-down': 'fade-in-down 0.6s ease-in-out forwards',
+        'fade-in': 'fade-in 0.8s ease-in forwards',
+        'fade-in-up': 'fade-in-up 0.8s ease-in-out forwards',
+        'fade-in-right': 'fade-in-right 0.8s ease-in-out forwards',
+        'fade-in-left': 'fade-in-left 0.8s ease-in-out forwards',
+        'fade-in-down': 'fade-in-down 0.8s ease-in-out forwards',
       },
       keyframes: {
         pop: {

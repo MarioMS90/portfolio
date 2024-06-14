@@ -4,6 +4,12 @@ import Badge from '@/components/Badge.astro';
 import Button from '@/components/Button.astro';
 import SOCIAL_BUTTONS from '@/constants/social-buttons';
 import image from '../assets/mario.webp';
+
+const animationVariants: { [key: number]: string } = {
+  0: 'animate-[fade-in-up_0.8s_ease-out_200ms_forwards]',
+  1: 'animate-[fade-in-up_0.8s_ease-out_300ms_forwards]',
+  2: 'animate-[fade-in-up_0.8s_ease-out_400ms_forwards]',
+};
 ---
 
 <div
@@ -23,10 +29,12 @@ import image from '../assets/mario.webp';
         transition
         md:static md:mb-6 md:hover:scale-105"
     >
-      <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
+      <Badge class="animate-fade-in-down opacity-0"
+        >Disponible para empleo</Badge
+      >
     </a>
-    <div class="animate-fade-in">
-      <h2 class="font-inter text-xl font-medium text-secondary">Hola! Soy</h2>
+    <div class="animate-fade-in opacity-0">
+      <h2 class="font-inter text-xl font-semibold text-secondary">Hola! Soy</h2>
       <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
       <p
         class="py-6
@@ -39,26 +47,34 @@ import image from '../assets/mario.webp';
         España.
       </p>
     </div>
-    <div class="animate-fade-in-up flex items-center gap-2 md:gap-7">
+    <div class="flex items-center gap-2 md:gap-7">
       {
-        SOCIAL_BUTTONS.map(link => (
-          <Button
-            href={link.url}
-            className={`
+        SOCIAL_BUTTONS.map((link, index) => (
+          <div class={`opacity-0 ${animationVariants[index]}`}>
+            <Button
+              href={link.url}
+              className={`
               bg-primary 
-              md:hover:opacity-100 
-              motion-safe:md:hover:animate-pop 
+               
+              md:hover:animate-pop
               dark:bg-black-1
             `}>
-            <link.icon class={`size-4 text-secondary ${link.iconClass}`} />
-            {link.name}
-          </Button>
+              <link.icon class={`size-4 text-secondary ${link.iconClass}`} />
+              {link.name}
+            </Button>
+          </div>
         ))
       }
     </div>
   </div>
   <div
-    class="animate-fade-in-down md:animate-fade-in-left mb-4 size-20 overflow-hidden rounded-full md:mb-0 md:size-44"
+    class="mb-4
+      size-20
+      animate-fade-in-down
+      overflow-hidden
+      rounded-full
+      opacity-0 md:mb-0 md:size-44
+      md:animate-fade-in-left"
   >
     <Image
       class="size-full object-cover"
