@@ -25,21 +25,14 @@ import { Image } from 'astro:assets';
             overflow-hidden 
             rounded-tl-xl rounded-tr-xl 
             md:h-60">
-          <Image
-            class="size-full object-cover"
-            src={picture}
-            alt={name}
-            loading="eager"
-          />
+          <Image class="size-full object-cover" src={picture} alt={name} loading="eager" />
         </div>
         <div
           class="content-wrapper 
             lg:gap56 
             flex flex-col gap-4 
             p-5">
-          <h3 class="font-inter text-2xl font-bold text-primary dark:text-white">
-            {name}
-          </h3>
+          <h3 class="font-inter text-2xl font-bold text-primary dark:text-white">{name}</h3>
           <ul class="flex flex-wrap items-center gap-3">
             {tags.map(tag => (
               <li

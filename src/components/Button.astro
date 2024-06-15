@@ -20,7 +20,7 @@ const { href, className } = Astro.props;
     font-inter text-sm font-semibold
     text-white
     transition md:px-7 md:text-base 
-    ${className}
+    ${className || ''}
     `}
   target="_blank"
   rel="noopener noreferrer"

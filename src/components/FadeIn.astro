@@ -1,0 +1,140 @@
+---
+interface Props {
+  animationName: AnimationName;
+  duration?: string;
+  timingFunction?: string;
+  delay?: string;
+  fillMode?: string;
+  className?: string;
+  showOnScroll?: boolean;
+}
+
+export enum AnimationName {
+  FADE_IN = 'fade-in',
+  FADE_IN_UP = 'fade-in-up',
+  FADE_IN_RIGHT = 'fade-in-right',
+  FADE_IN_DOWN = 'fade-in-down',
+  FADE_IN_LEFT = 'fade-in-left',
+}
+
+const { animationName, duration, timingFunction, delay, fillMode, className, showOnScroll } =
+  Astro.props;
+---
+
+<div
+  class={`fade-in-element ${showOnScroll ? 'fade-in-scroll' : 'fade-in-effect'} ${className || ''}`}
+>
+  <slot />
+</div>
+
+<style define:vars={{ animationName, duration, timingFunction, delay, fillMode }}>
+  .fade-in-element {
+    opacity: 0;
+  }
+
+  .fade-in-reverse {
+    animation-direction: reverse;
+  }
+
+  .fade-in-effect {
+    animation-name: var(--animationName);
+    animation-duration: var(--duration, 0.8s);
+    animation-timing-function: var(--timingFunction, ease-in-out);
+    animation-delay: var(--delay, 0s);
+    animation-fill-mode: var(--fillMode, forwards);
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fade-in-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+
+<script>
+  const fadeInElements = document.querySelectorAll('.fade-in-scroll');
+
+  const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('fade-in-reverse');
+        entry.target.classList.remove('fade-in-effect');
+        entry.target.classList.add('fade-in-effect');
+      } else {
+        entry.target.classList.remove('fade-in-effect');
+        entry.target.classList.add('fade-in-reverse');
+        entry.target.classList.add('fade-in-effect');
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(intersectionCallback, {
+    root: null,
+    rootMargin: '0px 0px -20% 0px',
+    threshold: 0.5,
+  });
+
+  fadeInElements.forEach(element => {
+    observer.observe(element);
+  });
+
+  // Cleanup function
+  document.onvisibilitychange = () => {
+    if (document.visibilityState === 'hidden') {
+      observer.disconnect();
+      return;
+    }
+
+    fadeInElements.forEach(element => {
+      observer.observe(element);
+    });
+  };
+</script>

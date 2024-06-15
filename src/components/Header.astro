@@ -23,12 +23,10 @@ import ThemeToggle from './ThemeToggle.astro';
         mario<span class="font-bold text-secondary">.dev</span>
       </h1></a
     >
-    <nav
-      class="flex
+    <nav class="flex
         items-center justify-between gap-0
         text-base
-        md:gap-4"
-    >
+        md:gap-4">
       {
         NAV_ITEMS.map(item => (
           <a
@@ -71,7 +69,7 @@ import ThemeToggle from './ThemeToggle.astro';
   const navItems = document.querySelectorAll('header nav a');
   const threshold = document.documentElement.clientWidth > 768 ? 0.8 : 0.5;
 
-  const callback = (entries: IntersectionObserverEntry[]): void => {
+  const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         navItems.forEach(item => {
@@ -85,7 +83,7 @@ import ThemeToggle from './ThemeToggle.astro';
     });
   };
 
-  const observer = new IntersectionObserver(callback, {
+  const observer = new IntersectionObserver(intersectionCallback, {
     root: null,
     rootMargin: '0px 0px -20% 0px',
     threshold: threshold,
@@ -107,6 +105,7 @@ import ThemeToggle from './ThemeToggle.astro';
     });
   };
 
+  // Header scroll effect
   const header = document.querySelector('header');
   if (header) {
     const checkScroll = () => {

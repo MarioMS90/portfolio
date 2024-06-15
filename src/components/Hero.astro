@@ -2,14 +2,9 @@
 import { Image } from 'astro:assets';
 import Badge from '@/components/Badge.astro';
 import Button from '@/components/Button.astro';
+import FadeIn, { AnimationName } from '@/components/FadeIn.astro';
 import SOCIAL_BUTTONS from '@/constants/social-buttons';
 import image from '../assets/mario.webp';
-
-const animationVariants: { [key: number]: string } = {
-  0: 'animate-[fade-in-up_0.8s_ease-out_200ms_forwards]',
-  1: 'animate-[fade-in-up_0.8s_ease-out_300ms_forwards]',
-  2: 'animate-[fade-in-up_0.8s_ease-out_400ms_forwards]',
-};
 ---
 
 <div
@@ -29,11 +24,9 @@ const animationVariants: { [key: number]: string } = {
         transition
         md:static md:mb-6 md:hover:scale-105"
     >
-      <Badge class="animate-fade-in-down opacity-0"
-        >Disponible para empleo</Badge
-      >
+      <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
     </a>
-    <div class="animate-fade-in opacity-0">
+    <div class="animate-fade-in">
       <h2 class="font-inter text-xl font-semibold text-secondary">Hola! Soy</h2>
       <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
       <p
@@ -43,26 +36,29 @@ const animationVariants: { [key: number]: string } = {
         [&>strong]:font-semibold [&>strong]:text-secondary"
       >
         Un apasionado desarrollador especializado en
-        <strong>frontend con +3 años de experiencia</strong> y con sede en Málaga,
-        España.
+        <strong>frontend con +3 años de experiencia</strong> y con sede en Málaga, España.
       </p>
     </div>
     <div class="flex items-center gap-2 md:gap-7">
       {
         SOCIAL_BUTTONS.map((link, index) => (
-          <div class={`opacity-0 ${animationVariants[index]}`}>
+          <FadeIn
+            animationName={AnimationName.FADE_IN_UP}
+            duration="0.8s"
+            timingFunction="ease-in-out"
+            delay={`${(index + 1) * 200}ms`}
+            fillMode="forwards">
             <Button
               href={link.url}
               className={`
               bg-primary 
-               
               md:hover:animate-pop
               dark:bg-black-1
             `}>
               <link.icon class={`size-4 text-secondary ${link.iconClass}`} />
               {link.name}
             </Button>
-          </div>
+          </FadeIn>
         ))
       }
     </div>
@@ -73,7 +69,7 @@ const animationVariants: { [key: number]: string } = {
       animate-fade-in-down
       overflow-hidden
       rounded-full
-      opacity-0 md:mb-0 md:size-44
+      md:mb-0 md:size-44
       md:animate-fade-in-left"
   >
     <Image

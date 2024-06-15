@@ -36,16 +36,13 @@ import LightModeIcon from './icons/LightMode.astro';
       return localStorage.getItem('theme');
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   };
 
   const updateIcon = (themePreference: string | null) => {
     document.querySelectorAll('.theme-toggle-icon').forEach(element => {
       if (element instanceof HTMLElement) {
-        element.style.display =
-          element.dataset.theme === themePreference ? 'none' : 'block';
+        element.style.display = element.dataset.theme === themePreference ? 'none' : 'block';
       }
     });
   };
