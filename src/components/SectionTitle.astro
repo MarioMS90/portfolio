@@ -6,14 +6,10 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
     mb-11
     flex items-center gap-4
     text-3xl font-bold">
-  <FadeIn
-    className="size-10 text-secondary"
-    animationName={AnimationName.FADE_IN}
-    showOnScroll={true}
-  >
+  <FadeIn className="size-10 text-secondary" animation={AnimationName.FADE_IN} showOnScroll={true}>
     <slot name="icon" />
   </FadeIn>
-  <FadeIn animationName={AnimationName.FADE_IN_RIGHT} showOnScroll={true}>
+  <FadeIn animation={AnimationName.FADE_IN_RIGHT} showOnScroll={true}>
     <slot />
   </FadeIn>
 </h2>

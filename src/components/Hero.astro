@@ -24,7 +24,9 @@ import image from '../assets/mario.webp';
         transition
         md:static md:mb-6 md:hover:scale-105"
     >
-      <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
+      <FadeIn animation={AnimationName.FADE_IN_DOWN}>
+        <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
+      </FadeIn>
     </a>
     <div class="animate-fade-in">
       <h2 class="font-inter text-xl font-semibold text-secondary">Hola! Soy</h2>
@@ -42,12 +44,7 @@ import image from '../assets/mario.webp';
     <div class="flex items-center gap-2 md:gap-7">
       {
         SOCIAL_BUTTONS.map((link, index) => (
-          <FadeIn
-            animationName={AnimationName.FADE_IN_UP}
-            duration="0.8s"
-            timingFunction="ease-in-out"
-            delay={`${(index + 1) * 200}ms`}
-            fillMode="forwards">
+          <FadeIn animation={AnimationName.FADE_IN_UP} delay={`${(index + 1) * 200}ms`}>
             <Button
               href={link.url}
               className={`
@@ -63,20 +60,22 @@ import image from '../assets/mario.webp';
       }
     </div>
   </div>
-  <div
-    class="mb-4
+  <FadeIn animation={AnimationName.FADE_IN_LEFT} animationMobile={AnimationName.FADE_IN_DOWN}>
+    <div
+      class="animate-fade-in-down
+      md:animate-fade-in-left
+      mb-4
       size-20
-      animate-fade-in-down
       overflow-hidden
-      rounded-full
-      md:mb-0 md:size-44
-      md:animate-fade-in-left"
-  >
-    <Image
-      class="size-full object-cover"
-      src={image}
-      alt="Mario Muñoz Frontend Developer"
-      loading="eager"
-    />
-  </div>
+      rounded-full md:mb-0
+      md:size-44"
+    >
+      <Image
+        class="size-full object-cover"
+        src={image}
+        alt="Mario Muñoz Frontend Developer"
+        loading="eager"
+      />
+    </div>
+  </FadeIn>
 </div>

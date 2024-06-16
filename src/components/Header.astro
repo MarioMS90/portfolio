@@ -67,7 +67,7 @@ import ThemeToggle from './ThemeToggle.astro';
 <script>
   const sections = document.querySelectorAll('section');
   const navItems = document.querySelectorAll('header nav a');
-  const threshold = document.documentElement.clientWidth > 768 ? 0.8 : 0.5;
+  const threshold = window.innerWidth >= 768 ? 0.8 : 0.5;
 
   const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {

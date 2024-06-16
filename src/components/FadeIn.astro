@@ -1,6 +1,7 @@
 ---
 interface Props {
-  animationName: AnimationName;
+  animation: AnimationName;
+  animationMobile?: AnimationName;
   duration?: string;
   timingFunction?: string;
   delay?: string;
@@ -17,18 +18,30 @@ export enum AnimationName {
   FADE_IN_LEFT = 'fade-in-left',
 }
 
-const { animationName, duration, timingFunction, delay, fillMode, className, showOnScroll } =
-  Astro.props;
+const {
+  animation,
+  animationMobile,
+  duration,
+  timingFunction,
+  delay,
+  fillMode,
+  className,
+  showOnScroll,
+} = Astro.props;
 ---
 
 <div
-  class={`fade-in-element ${showOnScroll ? 'fade-in-scroll' : 'fade-in-effect'} ${className || ''}`}
+  class=`fade-in-element ${showOnScroll && 'fade-in-scroll'}`
+  data-animation={animation}
+  data-animation-mobile={animationMobile}
 >
-  <slot />
+  <div class={`animation-target opacity-0 ${className || ''}`}>
+    <slot />
+  </div>
 </div>
 
-<style define:vars={{ animationName, duration, timingFunction, delay, fillMode }}>
-  .fade-in-element {
+<style define:vars={{ duration, timingFunction, delay, fillMode }}>
+  .opacity-0 {
     opacity: 0;
   }
 
@@ -37,7 +50,17 @@ const { animationName, duration, timingFunction, delay, fillMode, className, sho
   }
 
   .fade-in-effect {
+    opacity: 0;
     animation-name: var(--animationName);
+    animation-duration: var(--duration, 0.8s);
+    animation-timing-function: var(--timingFunction, ease-in-out);
+    animation-delay: var(--delay, 0s);
+    animation-fill-mode: var(--fillMode, forwards);
+  }
+
+  .fade-out-effect {
+    opacity: 1;
+    animation-name: var(--reverseAnimation);
     animation-duration: var(--duration, 0.8s);
     animation-timing-function: var(--timingFunction, ease-in-out);
     animation-delay: var(--delay, 0s);
@@ -97,32 +120,111 @@ const { animationName, duration, timingFunction, delay, fillMode, className, sho
       transform: translateX(0);
     }
   }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-out-up {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes fade-out-right {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  }
+
+  @keyframes fade-out-down {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  @keyframes fade-out-left {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+  }
 </style>
 
 <script>
-  const fadeInElements = document.querySelectorAll('.fade-in-scroll');
+  const fadeElements = Array.from(document.querySelectorAll('.fade-in-element'));
+  const fadeScrollElements = Array.from(fadeElements).filter(element =>
+    element.classList.contains('fade-in-scroll'),
+  );
+
+  fadeElements.forEach(element => {
+    if (element instanceof HTMLElement) {
+      const animationMobile = element.dataset.animationMobile;
+      let animation = element.dataset.animation;
+
+      if (animationMobile) {
+        if (window.innerWidth <= 768) {
+          animation = animationMobile;
+        }
+      }
+
+      if (animation) {
+        const reverseAnimation = animation.replace('in', 'out');
+        element.style.setProperty('--animationName', animation);
+        element.style.setProperty('--reverseAnimation', reverseAnimation);
+
+        if (!element.classList.contains('fade-in-scroll')) {
+          const animationTarget = element.querySelector('.animation-target') as HTMLElement;
+          animationTarget.classList.add('fade-in-effect');
+        }
+      }
+    }
+  });
 
   const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {
+      const animationTarget = entry.target.querySelector('.animation-target') as HTMLElement;
       if (entry.isIntersecting) {
-        entry.target.classList.remove('fade-in-reverse');
-        entry.target.classList.remove('fade-in-effect');
-        entry.target.classList.add('fade-in-effect');
+        animationTarget.classList.remove('fade-out-effect');
+        animationTarget.classList.add('fade-in-effect');
       } else {
-        entry.target.classList.remove('fade-in-effect');
-        entry.target.classList.add('fade-in-reverse');
-        entry.target.classList.add('fade-in-effect');
+        animationTarget.classList.remove('fade-in-effect');
+        animationTarget.classList.add('fade-out-effect');
       }
     });
   };
 
   const observer = new IntersectionObserver(intersectionCallback, {
     root: null,
-    rootMargin: '0px 0px -20% 0px',
-    threshold: 0.5,
+    rootMargin: '0px 0px -8% 0px',
+    threshold: 0.2,
   });
 
-  fadeInElements.forEach(element => {
+  fadeScrollElements.forEach(element => {
     observer.observe(element);
   });
 
@@ -133,7 +235,7 @@ const { animationName, duration, timingFunction, delay, fillMode, className, sho
       return;
     }
 
-    fadeInElements.forEach(element => {
+    fadeScrollElements.forEach(element => {
       observer.observe(element);
     });
   };

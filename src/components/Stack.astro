@@ -1,6 +1,7 @@
 ---
 import STACK from '@/constants/stack-items';
 import StackElement from './StackElement.astro';
+import FadeIn, { AnimationName } from './FadeIn.astro';
 
 const stackGroups = [
   {
@@ -30,12 +31,17 @@ const stackGroups = [
           {stackGroup.title}
         </h3>
         <ul class="flex flex-wrap gap-8">
-          {stackGroup.items.map(item => (
+          {stackGroup.items.map((item, index) => (
             <li>
-              <StackElement>
-                <item.icon class="h-7" />
-                {item.name}
-              </StackElement>
+              <FadeIn
+                animation={AnimationName.FADE_IN_UP}
+                delay={`${(index + 1) * 100}ms`}
+                showOnScroll={true}>
+                <StackElement>
+                  <item.icon class="h-7" />
+                  {item.name}
+                </StackElement>
+              </FadeIn>
             </li>
           ))}
         </ul>
