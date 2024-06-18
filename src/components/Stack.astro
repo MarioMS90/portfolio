@@ -32,17 +32,16 @@ const stackGroups = [
         </h3>
         <ul class="flex flex-wrap gap-8">
           {stackGroup.items.map((item, index) => (
-            <li>
-              <FadeIn
-                animation={AnimationName.FADE_IN_UP}
-                delay={`${(index + 1) * 100}ms`}
-                showOnScroll={true}>
-                <StackElement>
-                  <item.icon class="h-7" />
-                  {item.name}
-                </StackElement>
-              </FadeIn>
-            </li>
+            <FadeIn
+              as="li"
+              animation={AnimationName.FADE_IN_UP}
+              delay={`${(index + 1) * 300}ms`}
+              showOnScroll={true}>
+              <StackElement>
+                <item.icon class="h-7" />
+                {item.name}
+              </StackElement>
+            </FadeIn>
           ))}
         </ul>
       </div>

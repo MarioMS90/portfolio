@@ -11,11 +11,8 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
   {
     PROJECTS.map(({ picture, name, tags, description, demo, source }, index) => (
       <FadeIn
-        animation={AnimationName.FADE_IN_UP}
-        delay={`${(index + 1) * 300}ms`}
-        showOnScroll={true}>
-        <article
-          class="relative
+        as="article"
+        className={`relative
           h-max
           rounded-xl 
           bg-white 
@@ -23,74 +20,71 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
           md:h-[540px] 
           md:max-w-[calc(50%-20px)] 
           lg:max-w-[calc(50%-28px)]
-          dark:bg-black-1">
-          <div
-            class="h-56 
+          dark:bg-black-1`}
+        animation={AnimationName.FADE_IN_UP}
+        delay={`${(index + 1) * 200}ms`}
+        showOnScroll={true}>
+        <div
+          class="h-56 
             w-full 
             overflow-hidden 
             rounded-tl-xl rounded-tr-xl 
             md:h-60">
-            <Image class="size-full object-cover" src={picture} alt={name} loading="eager" />
-          </div>
-          <div
-            class="content-wrapper 
+          <Image class="size-full object-cover" src={picture} alt={name} loading="eager" />
+        </div>
+        <div
+          class="content-wrapper 
             lg:gap56 
             flex flex-col gap-4 
             p-5">
-            <h3 class="font-inter text-2xl font-bold text-primary dark:text-white">{name}</h3>
-            <ul class="flex flex-wrap items-center gap-3">
-              {tags.map(tag => (
-                <li
-                  class={`
-                  flex items-center gap-1 
+          <h3 class="font-inter text-2xl font-bold text-primary dark:text-white">{name}</h3>
+          <ul class="flex flex-wrap items-center gap-3">
+            {tags.map(tag => (
+              <li
+                class={`flex 
+                  items-center gap-1 
                   rounded-full 
                   px-3 py-1 
-                  ${tag.className}
-                `}>
-                  <tag.icon class="h-3" />
-                  <span class="text-xs font-semibold">{tag.name}</span>
-                </li>
-              ))}
-            </ul>
-            <p class="leading-6">{description}</p>
-          </div>
-          <div
-            class="bottom-6 left-0 
+                  ${tag.className}`}>
+                <tag.icon class="h-3" />
+                <span class="text-xs font-semibold">{tag.name}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="leading-6">{description}</p>
+        </div>
+        <div
+          class="bottom-6 left-0 
             mb-6 mt-4 
             flex 
             w-full 
             justify-between 
             px-5 
             md:absolute md:mb-0 md:mt-0">
-            {demo && (
-              <Button
-                href={demo}
-                className={`
-                dark:white 
+          {demo && (
+            <Button
+              href={demo}
+              className={`dark:white 
                 w-[44%]
                 border
                 border-primary 
                 bg-white text-primary 
-                opacity-100 md:hover:opacity-70 dark:md:hover:opacity-90
-              `}>
-                <AppWindowIcon class="h-5 text-secondary" />
-                <span class="text-primary">Demo</span>
-              </Button>
-            )}
-            {source && (
-              <Button
-                href={source}
-                className={`
-                w-[44%] 
+                opacity-100 md:hover:opacity-70 dark:md:hover:opacity-90`}>
+              <AppWindowIcon class="h-5 text-secondary" />
+              <span class="text-primary">Demo</span>
+            </Button>
+          )}
+          {source && (
+            <Button
+              href={source}
+              className={`w-[44%] 
                 bg-primary 
-                opacity-100 md:hover:opacity-70 dark:md:hover:opacity-90
-                `}>
-                <GithubIcon class="h-4 text-secondary" />
-                Código
-              </Button>
-            )}
-          </div>
-        </article>
+                opacity-100 md:hover:opacity-70 dark:md:hover:opacity-90`}>
+              <GithubIcon class="h-4 text-secondary" />
+              Código
+            </Button>
+          )}
+        </div>
       </FadeIn>
     ))
   }

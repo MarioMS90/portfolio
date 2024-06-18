@@ -1,33 +1,39 @@
-<article
-  class="text-lg
-    leading-7
-    [&>p>strong]:font-normal
-    [&>p>strong]:text-secondary
-    [&>p]:mb-7"
->
-  <p>
-    Soy Mario, un <strong
-      >desarrollador web con sede en Málaga con más de tres años de experiencia en el campo.</strong
-    > Mi viaje en el mundo del desarrollo comenzó como una aventura incierta, pero rápidamente descubrí
-    que es mi verdadera vocación.
-  </p>
-  <p>
-    Inicialmente, me especialicé en el desarrollo frontend. A medida que fui ganando experiencia,
-    también me sumergí en el backend, <strong
-      >adquiriendo habilidades que me permiten manejar proyectos de desarrollo completos de
-      principio a fin.</strong
-    >
-  </p>
-  <p>
-    <strong>Destaco por mi responsabilidad y compromiso en el trabajo.</strong> Siempre busco dar lo
-    mejor de mí en cada proyecto, asegurándome de cumplir con los plazos y mantener la calidad del trabajo
-    al más alto nivel.
-  </p>
-  <p>
-    Estoy constantemente buscando aprender y mejorar mis habilidades para ofrecer soluciones
-    innovadoras y eficientes. <strong
-      >Si buscas a alguien que pueda manejar cualquier aspecto del desarrollo web con pasión y
-      dedicación</strong
-    >, ¡soy la persona que necesitas!
-  </p>
-</article>
+---
+import FadeIn, { AnimationName } from './FadeIn.astro';
+---
+
+<FadeIn animation={AnimationName.FADE_IN_UP} showOnScroll={true} duration="1s">
+  <article
+    class="text-lg
+      leading-7
+      [&>p>strong]:font-normal
+      [&>p>strong]:text-secondary
+      [&>p]:mb-7"
+  >
+    <p>
+      Soy Mario, un <strong
+        >desarrollador web con sede en Málaga con más de tres años de experiencia en el campo.</strong
+      > Mi viaje en el mundo del desarrollo comenzó como una aventura incierta, pero rápidamente descubrí
+      que es mi verdadera vocación.
+    </p>
+    <p>
+      Inicialmente, me especialicé en el desarrollo frontend. A medida que fui ganando experiencia,
+      también me sumergí en el backend, <strong
+        >adquiriendo habilidades que me permiten manejar proyectos de desarrollo completos de
+        principio a fin.</strong
+      >
+    </p>
+    <p>
+      <strong>Destaco por mi responsabilidad y compromiso en el trabajo.</strong> Siempre busco dar lo
+      mejor de mí en cada proyecto, asegurándome de cumplir con los plazos y mantener la calidad del
+      trabajo al más alto nivel.
+    </p>
+    <p>
+      Estoy constantemente buscando aprender y mejorar mis habilidades para ofrecer soluciones
+      innovadoras y eficientes. <strong
+        >Si buscas a alguien que pueda manejar cualquier aspecto del desarrollo web con pasión y
+        dedicación</strong
+      >, ¡soy la persona que necesitas!
+    </p>
+  </article>
+</FadeIn>

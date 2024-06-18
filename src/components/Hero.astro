@@ -24,20 +24,20 @@ import image from '../assets/mario.webp';
         transition
         md:static md:mb-6 md:hover:scale-105"
     >
-      <FadeIn animation={AnimationName.FADE_IN_DOWN}>
+      <FadeIn animation={AnimationName.FADE_IN_DOWN} duration="1s">
         <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
       </FadeIn>
     </a>
     <div class="animate-fade-in">
-      <h2 class="font-inter text-xl font-semibold text-secondary">Hola! Soy</h2>
+      <h2 class="font-inter text-xl font-medium text-secondary">Hola! Soy</h2>
       <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
       <p
-        class="py-6
-        text-2xl
-        font-semibold leading-8 md:py-7
-        [&>strong]:font-semibold [&>strong]:text-secondary"
+        class="text-pretty
+        py-6
+        text-2xl font-semibold leading-8
+        md:py-7 [&>strong]:font-semibold [&>strong]:text-secondary"
       >
-        Un apasionado desarrollador especializado en
+        Un apasionado desarrollador web especializado en
         <strong>frontend con +3 años de experiencia</strong> y con sede en Málaga, España.
       </p>
     </div>
@@ -47,11 +47,9 @@ import image from '../assets/mario.webp';
           <FadeIn animation={AnimationName.FADE_IN_UP} delay={`${(index + 1) * 200}ms`}>
             <Button
               href={link.url}
-              className={`
-              bg-primary 
-              md:hover:animate-pop
-              dark:bg-black-1
-            `}>
+              className={`bg-primary 
+                md:hover:animate-pop
+                dark:bg-black-1`}>
               <link.icon class={`size-4 text-secondary ${link.iconClass}`} />
               {link.name}
             </Button>
@@ -60,7 +58,11 @@ import image from '../assets/mario.webp';
       }
     </div>
   </div>
-  <FadeIn animation={AnimationName.FADE_IN_LEFT} animationMobile={AnimationName.FADE_IN_DOWN}>
+  <FadeIn
+    animation={AnimationName.FADE_IN_LEFT}
+    animationMobile={AnimationName.FADE_IN_DOWN}
+    duration="1s"
+  >
     <div
       class="animate-fade-in-down
       md:animate-fade-in-left

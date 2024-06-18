@@ -9,7 +9,7 @@ import PythonIcon from '@/components/icons/technologies/Python.astro';
 import TailwindIcon from '@/components/icons/technologies/Tailwind.astro';
 import type { Project, Tag } from '@/types/Project';
 import pictopeerImage from '../assets/pictopeer.webp';
-import portfolioImage from '../assets/astro.webp';
+import astroImage from '../assets/astro.webp';
 
 const TAGS: Record<string, Tag> = {
   ANGULAR: {
@@ -70,32 +70,22 @@ const PROJECTS: Project[] = [
     source: 'https://github.com/MarioMS90/Pictopeer',
   },
   {
-    name: 'Portfolio',
+    name: 'Portfolio template',
     description: `Template de portfolio personal para mostrar proyectos, 
                   habilidades y experiencia laboral, creado con Astro y Tailwind CSS.`,
-    picture: portfolioImage,
+    picture: astroImage,
     tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.TAILWIND],
     demo: 'https://frontmario.dev/',
     source: 'https://github.com/MarioMS90/portfolio',
   },
-  /* {
-    name: 'Proyecto 2',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    picture: pictopeerImage,
-    tags: [TAGS.NEXTJS, TAGS.REACT, TAGS.TAILWIND, TAGS.TYPESCRIPT],
-    demo: '/',
-    source: 'https://github.com/MarioMS90/Pictopeer',
-  },
   {
-    name: 'Proyecto 3',
+    name: 'Fade in transitions for Astro',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    picture: pictopeerImage,
-    tags: [TAGS.PYTHON, TAGS.ASTRO],
-    demo: '/',
-    source: 'https://github.com/MarioMS90/Pictopeer',
-  }, */
+      'A Astro library to animate the fade in of elements using only CSS for the transitions.',
+    picture: astroImage,
+    tags: [TAGS.ASTRO, TAGS.TYPESCRIPT],
+    source: 'https://github.com/MarioMS90/portfolio',
+  },
 ] as const;
 
 export default PROJECTS;
