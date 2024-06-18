@@ -84,7 +84,7 @@ const PROJECTS: Project[] = [
       'A Astro library to animate the fade in of elements using only CSS for the transitions.',
     picture: astroImage,
     tags: [TAGS.ASTRO, TAGS.TYPESCRIPT],
-    source: 'https://github.com/MarioMS90/portfolio',
+    source: 'https://github.com/MarioMS90/portfolio/blob/main/src/components/FadeIn.astro',
   },
 ] as const;
 

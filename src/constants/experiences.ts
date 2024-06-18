@@ -11,15 +11,11 @@ const EXPERIENCES: Experience[] = [
   {
     title: 'Frontend developer en Paraty Tech',
     date: 'Marzo 2021 - Marzo 2024',
-    description: `Comencé realizando tareas de maquetación, y durante 
-                  mi trayectoria fui asumiendo desarrollos completos
-                  tanto de frontend como de backend en un motor de 
-                  reservas para establecimientos, desarrollos que a 
-                  día de hoy se utilizan en numerosas cadenas 
-                  hoteleras. 
-                  <br /> <br />
-                  Finalmente, tuve mi primera experiencia como 
-                  responsable de equipo.`,
+    description: `Comencé realizando tareas de maquetación en un 
+                  motor de reservas para establecimientos hoteleros, 
+                  a medida que fui ganando experiencia fui asumiendo 
+                  desarrollos más complejos, los cuales a día de hoy 
+                  se utilizan en numerosas cadenas hoteleras.`,
   },
 ] as const;
 
