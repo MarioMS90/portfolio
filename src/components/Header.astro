@@ -19,8 +19,8 @@ import ThemeToggle from './ThemeToggle.astro';
       md:flex md:max-w-3xl lg:max-w-4xl"
   >
     <a href="/" aria-label="Home">
-      <h1 class="hidden text-xl font-semibold md:block">
-        {'<Mario/>'}<span class="font-extrabold text-secondary">.dev</span>
+      <h1 class="text-md hidden font-semibold md:block">
+        {'<Mario/>'}<span class="text-xl font-bold text-secondary">.dev</span>
       </h1></a
     >
     <nav class="flex
@@ -64,9 +64,8 @@ import ThemeToggle from './ThemeToggle.astro';
 </style>
 
 <script>
-  const sections = document.querySelectorAll('section');
+  const sections = Array.from(document.querySelectorAll('section')).slice(1);
   const navItems = document.querySelectorAll('header nav a');
-  const threshold = window.innerWidth >= 768 ? 0.8 : 0.5;
 
   const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {
@@ -85,7 +84,7 @@ import ThemeToggle from './ThemeToggle.astro';
   const observer = new IntersectionObserver(intersectionCallback, {
     root: null,
     rootMargin: '0px 0px -20% 0px',
-    threshold: threshold,
+    threshold: 0.3,
   });
 
   sections.forEach(section => {

@@ -1,11 +1,11 @@
 import type { NavItem } from '@/types/NavItem';
 
 const NAV_ITEMS: NavItem[] = [
-  {
+  /* {
     title: 'Inicio',
     url: '/#hero',
     class: 'hidden md:block',
-  },
+  }, */
   {
     title: 'Experiencia',
     url: '/#experience',

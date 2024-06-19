@@ -80,8 +80,8 @@ const PROJECTS: Project[] = [
   },
   {
     name: 'Fade in transitions for Astro',
-    description:
-      'A Astro library to animate the fade in of elements using only CSS for the transitions.',
+    description: `Una biblioteca de Astro para animar la aparición gradual de elementos, 
+                  usando únicamente animaciones CSS.`,
     picture: astroImage,
     tags: [TAGS.ASTRO, TAGS.TYPESCRIPT],
     source: 'https://github.com/MarioMS90/portfolio/blob/main/src/components/FadeIn.astro',
