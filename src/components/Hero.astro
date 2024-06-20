@@ -28,7 +28,7 @@ import image from '../assets/mario.webp';
         <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
       </FadeIn>
     </a>
-    <div class="animate-fade-in">
+    <FadeIn animation={AnimationName.FADE_IN} duration="1s">
       <h2 class="font-inter text-xl font-medium text-secondary">Hola! Soy</h2>
       <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
       <p
@@ -40,7 +40,7 @@ import image from '../assets/mario.webp';
         Un apasionado desarrollador web especializado en
         <strong>frontend con +3 años de experiencia</strong> y con sede en Málaga, España.
       </p>
-    </div>
+    </FadeIn>
     <div class="flex items-center gap-2 md:gap-7">
       {
         SOCIAL_BUTTONS.map((link, index) => (
