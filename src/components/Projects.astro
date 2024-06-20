@@ -24,14 +24,15 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
         animation={AnimationName.FADE_IN_UP}
         delay={`${(index + 1) * 200}ms`}
         showOnScroll={true}>
-        <div
-          class="h-56 
+        <picture
+          class="block 
+            h-56
             w-full 
             overflow-hidden 
             rounded-tl-xl rounded-tr-xl 
             md:h-60">
           <Image class="size-full object-cover" src={picture} alt={name} loading="eager" />
-        </div>
+        </picture>
         <div
           class="content-wrapper 
             lg:gap56 
