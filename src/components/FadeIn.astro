@@ -130,10 +130,8 @@ const {
       const animationMobile = element.dataset.animationMobile;
       let animation = element.dataset.animation;
 
-      if (animationMobile) {
-        if (window.innerWidth <= 768) {
-          animation = animationMobile;
-        }
+      if (animationMobile && window.innerWidth <= 768) {
+        animation = animationMobile;
       }
 
       if (animation) {
