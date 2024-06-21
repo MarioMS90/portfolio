@@ -24,11 +24,11 @@ import image from '../assets/mario.webp';
         transition
         md:static md:mb-6 md:hover:scale-105"
     >
-      <FadeIn animation={AnimationName.FADE_IN_DOWN} duration="1s">
+      <FadeIn animation={AnimationName.FADE_IN_DOWN}>
         <Badge class="animate-fade-in-down">Disponible para empleo</Badge>
       </FadeIn>
     </a>
-    <FadeIn animation={AnimationName.FADE_IN} duration="1s">
+    <FadeIn animation={AnimationName.FADE_IN}>
       <h2 class="font-inter text-xl font-medium text-secondary">Hola! Soy</h2>
       <h1 class="font-inter text-5xl font-bold">Mario Muñoz</h1>
       <p
@@ -58,11 +58,7 @@ import image from '../assets/mario.webp';
       }
     </div>
   </div>
-  <FadeIn
-    animation={AnimationName.FADE_IN_LEFT}
-    animationMobile={AnimationName.FADE_IN_DOWN}
-    duration="1s"
-  >
+  <FadeIn animation={AnimationName.FADE_IN_LEFT} animationMobile={AnimationName.FADE_IN_DOWN}>
     <picture
       class="animate-fade-in-down md:animate-fade-in-left
       mb-4
