@@ -69,7 +69,7 @@ const PROJECTS: Project[] = [
     tags: [TAGS.ANGULAR, TAGS.LARAVEL],
     source: 'https://github.com/MarioMS90/Pictopeer',
   },
-  {
+  /* {
     name: 'Portfolio template',
     description: `Template de portfolio personal para mostrar proyectos, 
                   habilidades y experiencia laboral, creado con Astro y Tailwind CSS.`,
@@ -77,7 +77,7 @@ const PROJECTS: Project[] = [
     tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.TAILWIND],
     demo: 'https://frontmario.dev/',
     source: 'https://github.com/MarioMS90/portfolio',
-  },
+  }, */
   {
     name: 'Fade in transitions for Astro',
     description: `Una biblioteca de Astro para animar la aparición gradual de elementos, 
