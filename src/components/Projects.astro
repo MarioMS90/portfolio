@@ -9,7 +9,7 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
 
 <div class="flex flex-wrap justify-between gap-y-10 lg:gap-y-14">
   {
-    PROJECTS.map(({ picture, name, tags, description, demo, source }, index) => (
+    PROJECTS.map(({ picture, name, tags, description, demo, source }) => (
       <FadeIn
         as="article"
         className={`relative
@@ -22,7 +22,6 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
           lg:max-w-[calc(50%-28px)]
           dark:bg-black-1`}
         animation={AnimationName.FADE_IN_UP}
-        delay={`${(index + 1) * 200}ms`}
         showOnScroll={true}>
         <picture
           class="block 
