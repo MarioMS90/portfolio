@@ -43,25 +43,25 @@ const {
   data-animation-mobile={animationMobile}
   style={{
     '--duration': duration,
-    '--timingFunction': timingFunction,
+    '--timing-function': timingFunction,
     '--delay': delay,
-    '--fillMode': fillMode,
+    '--fill-fode': fillMode,
   }}
 >
   <slot />
 </Tag>
 
-<style>
+<style define:vars={{ hola: 'hola' }}>
   .fade-in-element {
     opacity: 0;
     animation-duration: var(--duration, 0.8s);
-    animation-timing-function: var(--timingFunction, ease-in-out);
+    animation-timing-function: var(--timing-function, ease-in-out);
     animation-delay: var(--delay, 0s);
-    animation-fill-mode: var(--fillMode, forwards);
+    animation-fill-mode: var(--fill-mode, forwards);
   }
 
   .fade-in-effect {
-    animation-name: var(--animationName);
+    animation-name: var(--animation-name);
   }
 
   @keyframes fade-in {
@@ -135,7 +135,7 @@ const {
       }
 
       if (animation) {
-        element.style.setProperty('--animationName', animation);
+        element.style.setProperty('--animation-name', animation);
 
         if (!element.classList.contains('fade-in-scroll')) {
           element.classList.add('fade-in-effect');

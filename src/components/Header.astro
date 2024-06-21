@@ -66,6 +66,9 @@ import ThemeToggle from './ThemeToggle.astro';
 <script>
   const sections = Array.from(document.querySelectorAll('section')).slice(1);
   const navItems = document.querySelectorAll('header nav a');
+  const isMobile = window.innerWidth <= 768;
+  const rootMargin = isMobile ? '0px 0px -10% 0px' : '0px 0px -30% 0px';
+  const threshold = isMobile ? 0.4 : 0.6;
 
   const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {
@@ -83,8 +86,8 @@ import ThemeToggle from './ThemeToggle.astro';
 
   const observer = new IntersectionObserver(intersectionCallback, {
     root: null,
-    rootMargin: '0px 0px -10% 0px',
-    threshold: 0.4,
+    rootMargin: rootMargin,
+    threshold: threshold,
   });
 
   sections.forEach(section => {
