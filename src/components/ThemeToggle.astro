@@ -26,47 +26,51 @@ import LightModeIcon from './icons/LightMode.astro';
   </span>
 </div>
 
-<script>
-  const getThemePreference = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  };
-
-  const updateIcon = (themePreference: string | null) => {
-    document.querySelectorAll('.theme-toggle-icon').forEach(element => {
-      if (element instanceof HTMLElement) {
-        element.style.display = element.dataset.theme === themePreference ? 'none' : 'block';
+<script is:inline>
+  if (typeof themeToggleRun === 'undefined') {
+    const getThemePreference = () => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
       }
+
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    const updateIcon = themePreference => {
+      document.querySelectorAll('.theme-toggle-icon').forEach(element => {
+        if (element instanceof HTMLElement) {
+          element.style.display = element.dataset.theme === themePreference ? 'none' : 'block';
+        }
+      });
+    };
+
+    const updateTheme = () => {
+      const themePreference = getThemePreference();
+      const isDark = themePreference === 'dark';
+
+      updateIcon(themePreference);
+      document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    };
+
+    updateTheme();
+
+    const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
+    matchMedia.addEventListener('change', updateTheme);
+
+    document.querySelectorAll('.theme-toggle-button').forEach(element => {
+      element.addEventListener('click', e => {
+        if (!(e.target instanceof Element)) {
+          return;
+        }
+
+        const parent = e.target.closest('.theme-toggle-icon');
+        if (parent instanceof HTMLElement && parent.dataset.theme) {
+          localStorage.setItem('theme', parent.dataset.theme);
+          updateTheme();
+        }
+      });
     });
-  };
 
-  const updateTheme = () => {
-    const themePreference = getThemePreference();
-    const isDark = themePreference === 'dark';
-
-    updateIcon(themePreference);
-    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-  };
-
-  updateTheme();
-
-  const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-  matchMedia.addEventListener('change', updateTheme);
-
-  document.querySelectorAll('.theme-toggle-button').forEach(element => {
-    element.addEventListener('click', e => {
-      if (!(e.target instanceof Element)) {
-        return;
-      }
-
-      const parent = e.target.closest('.theme-toggle-icon');
-      if (parent instanceof HTMLElement && parent.dataset.theme) {
-        localStorage.setItem('theme', parent.dataset.theme);
-        updateTheme();
-      }
-    });
-  });
+    let themeToggleRun = true;
+  }
 </script>
