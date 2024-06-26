@@ -6,22 +6,26 @@ import LightModeIcon from './icons/LightMode.astro';
 <div class="theme-toggle-button">
   <span class="theme-toggle-icon" data-theme="dark">
     <DarkModeIcon
-      class={`h-6
+      class={`
+        h-6
         cursor-pointer
         transition
         hover:scale-110
         md:h-7
-        text-primary`}
+        text-primary
+      `}
     />
   </span>
   <span class="theme-toggle-icon" data-theme="light">
     <LightModeIcon
-      class={`h-6
+      class={`
+        h-6
         cursor-pointer
         transition
         hover:scale-110
         md:h-7
-        text-white`}
+        text-white
+      `}
     />
   </span>
 </div>
@@ -38,9 +42,7 @@ import LightModeIcon from './icons/LightMode.astro';
 
     const updateIcon = themePreference => {
       document.querySelectorAll('.theme-toggle-icon').forEach(element => {
-        if (element instanceof HTMLElement) {
-          element.style.display = element.dataset.theme === themePreference ? 'none' : 'block';
-        }
+        element.style.display = element.dataset.theme === themePreference ? 'none' : 'block';
       });
     };
 
@@ -59,15 +61,10 @@ import LightModeIcon from './icons/LightMode.astro';
 
     document.querySelectorAll('.theme-toggle-button').forEach(element => {
       element.addEventListener('click', e => {
-        if (!(e.target instanceof Element)) {
-          return;
-        }
-
         const parent = e.target.closest('.theme-toggle-icon');
-        if (parent instanceof HTMLElement && parent.dataset.theme) {
-          localStorage.setItem('theme', parent.dataset.theme);
-          updateTheme();
-        }
+        localStorage.setItem('theme', parent.dataset.theme);
+
+        updateTheme();
       });
     });
 
