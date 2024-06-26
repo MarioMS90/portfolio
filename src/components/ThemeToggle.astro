@@ -27,7 +27,7 @@ import LightModeIcon from './icons/LightMode.astro';
 </div>
 
 <script is:inline>
-  if (typeof themeToggleRun === 'undefined') {
+  if (typeof themeToggleExecuted === 'undefined') {
     const getThemePreference = () => {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
         return localStorage.getItem('theme');
@@ -71,6 +71,6 @@ import LightModeIcon from './icons/LightMode.astro';
       });
     });
 
-    let themeToggleRun = true;
+    let themeToggleExecuted = true;
   }
 </script>
