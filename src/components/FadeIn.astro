@@ -36,9 +36,11 @@ const {
 ---
 
 <Tag
-  class=`fade-in-element 
+  class={`
+    fade-in-element 
     ${className || ''}
-    ${showOnScroll ? 'fade-in-scroll' : ''}`
+    ${showOnScroll ? 'fade-in-scroll' : ''}
+  `}
   data-animation={animation}
   data-animation-mobile={animationMobile}
   style={{

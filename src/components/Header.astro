@@ -4,34 +4,43 @@ import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header
-  class="fixed
-          top-0
-          z-10
-          w-full
-          px-4 py-3
-          font-inter font-medium"
+  class={`
+    fixed
+    top-0
+    z-10
+    w-full
+    px-4 py-3
+    font-inter font-medium
+  `}
 >
   <div
-    class="mx-auto
+    class={`
+      mx-auto
       block
       items-center
       justify-between
-      md:flex md:max-w-3xl lg:max-w-4xl"
+      md:flex md:max-w-3xl lg:max-w-4xl
+    `}
   >
     <a href="/" aria-label="Home">
       <h1 class="text-md hidden font-semibold md:block">
-        {'<Mario/>'}<span class="text-xl font-bold text-secondary">.dev</span>
+        {`<Mario/>`}<span class="text-xl font-bold text-secondary">.dev</span>
       </h1></a
     >
-    <nav class="flex
+    <nav
+      class={`
+        flex
         items-center justify-between gap-0
         text-base
-        md:gap-4">
+        md:gap-4
+      `}
+    >
       {
         NAV_ITEMS.map(item => (
           <a
             href={item.url}
-            class={`relative
+            class={`
+              relative
               after:absolute 
               after:bottom-0 
               after:left-0
@@ -41,7 +50,8 @@ import ThemeToggle from './ThemeToggle.astro';
               after:transition-[width]
               md:hover:after:w-full
               dark:after:bg-white
-              ${item.class}`}
+              ${item.class}
+            `}
             aria-label={item.title}>
             {item.title}
           </a>

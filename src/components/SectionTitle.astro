@@ -2,10 +2,14 @@
 import FadeIn, { AnimationName } from './FadeIn.astro';
 ---
 
-<h2 class="font-primary
+<h2
+  class={`
+    font-primary
     mb-11
     flex items-center gap-4
-    text-3xl font-bold">
+    text-3xl font-bold
+  `}
+>
   <FadeIn className="size-10 text-secondary" animation={AnimationName.FADE_IN} showOnScroll={true}>
     <slot name="icon" />
   </FadeIn>

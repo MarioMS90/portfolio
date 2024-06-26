@@ -24,10 +24,12 @@ const stackGroups = [
     stackGroups.map(stackGroup => (
       <div class="stack-group">
         <h3
-          class="mb-7 
+          class={`
+            mb-7 
             font-inter 
             text-xl font-semibold text-primary 
-            dark:text-white">
+            dark:text-white
+          `}>
           {stackGroup.title}
         </h3>
         <ul class="flex flex-wrap gap-8">

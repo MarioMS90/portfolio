@@ -4,11 +4,13 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
 ---
 
 <ol
-  class="relative
+  class={`
+    relative
     space-y-28
     border-s border-gray-300
     pb-20 pt-10
-    dark:border-gray-500"
+    dark:border-gray-500
+  `}
 >
   {
     EXPERIENCES.map((experience, index) => (
@@ -20,35 +22,43 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
         delay={`${(index + 1) * 200}ms`}>
         <div class="md:max-w-[30%]">
           <div
-            class="absolute 
+            class={`
+              absolute 
               -start-[27px] 
               mt-2
               h-3 
               w-3 rounded-full 
               bg-secondary 
-              md:-start-[30px]"
+              md:-start-[30px]
+            `}
           />
           <h3
-            class="text-balance 
+            class={`
+              text-balance 
               font-inter text-xl font-semibold 
               text-primary
-              dark:text-white">
+              dark:text-white
+            `}>
             {experience.title}
           </h3>
           <time
-            class="mb-1 
+            class={`
+              mb-1 
               text-sm font-normal 
               leading-6 
-              text-gray-500 dark:text-gray-200">
+              text-gray-500 dark:text-gray-200
+            `}>
             {experience.date}
           </time>
         </div>
 
         <p
-          class="mt-8 
+          class={`
+            mt-8 
             text-base font-normal text-gray-500 
             md:mt-0 md:max-w-[60%] 
-            dark:text-gray-200">
+            dark:text-gray-200
+            `}>
           <Fragment set:html={experience.description} />
         </p>
       </FadeIn>

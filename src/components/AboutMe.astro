@@ -4,11 +4,13 @@ import FadeIn, { AnimationName } from './FadeIn.astro';
 
 <FadeIn animation={AnimationName.FADE_IN_UP} showOnScroll={true} duration="1s">
   <article
-    class="text-pretty
+    class={`
+      text-pretty
       text-lg
       leading-7
       [&>p>strong]:font-normal
-      [&>p>strong]:text-secondary [&>p]:mb-7"
+      [&>p>strong]:text-secondary [&>p]:mb-7
+    `}
   >
     <p>
       Soy Mario, un desarrollador web con sede en Málaga con <strong
