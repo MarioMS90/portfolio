@@ -7,6 +7,6 @@ export interface Props {
 const { id, className } = Astro.props;
 ---
 
-<section id={id} class={`mx-auto md:max-w-3xl lg:max-w-4xl ${className || ''}`}>
+<section id={id} class={`mx-auto md:max-w-3xl lg:max-w-4xl pt-20 md:pt-28 ${className || ''}`}>
   <slot />
 </section>
