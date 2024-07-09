@@ -39,15 +39,15 @@ const {
   class={`
     fade-in-element 
     ${className || ''}
-    ${showOnScroll ? 'fade-in-scroll' : ''}
+    ${showOnScroll ? 'fade-in-scroll' : 'fade-in-effect'}
   `}
-  data-animation={animation}
-  data-animation-mobile={animationMobile}
   style={{
     '--duration': duration,
     '--timing-function': timingFunction,
     '--delay': delay,
     '--fill-fode': fillMode,
+    '--animation-name': animation,
+    '--animation-name-mobile': animationMobile,
   }}
 >
   <slot />
@@ -64,6 +64,12 @@ const {
 
   .fade-in-effect {
     animation-name: var(--animation-name);
+  }
+
+  @media (max-width: 768px) {
+    .fade-in-effect {
+      animation-name: var(--animation-name-mobile, var(--animation-name));
+    }
   }
 
   @keyframes fade-in {
@@ -122,29 +128,7 @@ const {
 </style>
 
 <script>
-  const fadeElements = Array.from(document.querySelectorAll('.fade-in-element'));
-  const fadeScrollElements = Array.from(fadeElements).filter(element =>
-    element.classList.contains('fade-in-scroll'),
-  );
-
-  fadeElements.forEach(element => {
-    if (element instanceof HTMLElement) {
-      const animationMobile = element.dataset.animationMobile;
-      let animation = element.dataset.animation;
-
-      if (animationMobile && window.innerWidth <= 768) {
-        animation = animationMobile;
-      }
-
-      if (animation) {
-        element.style.setProperty('--animation-name', animation);
-
-        if (!element.classList.contains('fade-in-scroll')) {
-          element.classList.add('fade-in-effect');
-        }
-      }
-    }
-  });
+  const fadeScrollElements = Array.from(document.querySelectorAll('.fade-in-scroll'));
 
   const intersectionCallback = (entries: IntersectionObserverEntry[]): void => {
     entries.forEach(entry => {
