@@ -16,6 +16,7 @@
   "vueIndentScriptAndStyle": false,
   "arrowParens": "avoid",
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "tailwindPreserveWhitespace": true,
   "overrides": [
     {
       "files": "*.astro",

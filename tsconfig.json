@@ -4,12 +4,8 @@
     "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
-  "exclude": [
-    "public"
-  ]
+  "exclude": ["public"]
 }

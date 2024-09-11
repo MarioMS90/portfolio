@@ -30,10 +30,7 @@ module.exports = {
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro'],
       },
-      extends: [
-        'plugin:astro/recommended',
-        'plugin:astro/jsx-a11y-recommended',
-      ],
+      extends: ['plugin:astro/recommended', 'plugin:astro/jsx-a11y-recommended'],
       rules: {},
     },
   ],
